@@ -1,0 +1,24 @@
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>
+        Visit id
+      </th>
+      <th>Date</th>
+      <th>Patient name</th>
+      <th>Patient surname</th>
+      <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let visit of visits">
+      <td>{{visit.id}}</td>
+      <td>{{visit.visitDate}}</td>
+      <td>{{visit.patient.firstName}}</td>
+      <td>{{visit.patient.lastName}}</td>
+      <td><a routerLink="{{visit.id}}">View details</a> </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
