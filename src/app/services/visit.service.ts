@@ -21,4 +21,9 @@ export class VisitService {
     console.log("im in get visit by id " +id)
     return this.http.get('/server/visits/' +id);
   }
+
+  createVisit(visit){
+    let body = JSON.stringify(visit);
+    return this.http.post('/server/visits', body, httpOptions);
+  }
 }
