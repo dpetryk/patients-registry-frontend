@@ -8,20 +8,16 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class VisitService {
+export class PatientService {
 
   constructor(private http: HttpClient) { }
 
-  getVisits(){
-    return this.http.get('/server/visits');
+  public getPatients(){
+    return this.http.get('/server/patients');
   }
 
-  getVisitById(id: number){
-    return this.http.get('/server/visits/' +id);
+  getPatientById(id: number){
+    return this.http.get('/server/patients/' +id);
   }
 
-  createVisit(visit){
-    let body = JSON.stringify(visit);
-    return this.http.post('/server/visits', body, httpOptions);
-  }
 }

@@ -8,8 +8,14 @@
     <div class="form-group">
       <label for="visitDate">Visit date</label>
       <input class="form-control" type="date" name="visitDate" id="visitDate" formControlName="visitDate" required autofocus>
-      <label for="patient">Patient</label>
-      <input class="form-control" type="text" name="patient" id="patient" formControlName="patient" autofocus>
+      <!--<label for="patient">Patient</label>-->
+      <!--<input class="form-control" type="text" name="patient" id="patient" formControlName="patient" autofocus>-->
+
+      <label for="patient">Patient </label>
+      <select class="form-control" name="patient" id="patient" name="patient">
+        <option *ngFor="let patient of patients" ngValue="{{patient}}">{{patient.firstName}} {{patient.lastName}}</option>
+      </select>
+
     </div>
     <button type="submit" class="btn btn-primary">Save visit</button>
   </form>

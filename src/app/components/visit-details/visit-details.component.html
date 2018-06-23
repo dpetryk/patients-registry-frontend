@@ -1,9 +1,39 @@
-<div>
-  <ul>
-    <li>Visit id: {{visit.id}}</li>
-    <li>Visit date: {{visit.visitDate}}</li>
-    <li>Patient name: {{visit.patient.firstName}} {{visit.patient.lastName}} </li>
-    <li>PESEL: {{visit.patient.pesel}}</li>
-    <li>Notes: {{visit.notes[0].note}}</li>
-  </ul>
+<div class="container">
+  <div class="row">
+    <div class="page-header col">
+      <h1>{{visit.patient.firstName}} {{visit.patient.lastName}}
+        <small> PESEL:&nbsp;{{visit.patient.pesel}}</small>
+      </h1>
+
+    </div>
+
+
+    <div class="col" align="right">
+
+      Patient address: <br>ul. {{visit.patient.address.street}}
+        {{visit.patient.address.house}}/{{visit.patient.address.apartment}}<br> {{visit.patient.address.postal}}
+        {{visit.patient.address.city}}
+    </div>
+  </div>
+  <hr>
+  <div align="right">
+    <h3> Visit date: {{visit.visitDate}}</h3>
+  </div>
+  <br>
+  Notes:
+
+  <div *ngFor="let note of visit.notes" class="card" style="margin: 15px">
+    <div class="card">
+      <div class="card-header">
+        {{note.noteDate}}
+      </div>
+      <div class="card-body">
+        {{note.note}}
+        <div align="right"><a routerLink="">edit</a></div>
+      </div>
+    </div>
+  </div>
+  <div align="right">
+    <a routerLink="../">add note</a> | <a routerLink="../">back</a>
+  </div>
 </div>

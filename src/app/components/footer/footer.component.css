@@ -1,0 +1,12 @@
+footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+footer p {
+  opacity: 0.5;
+  font-size: 16px;
+  margin: 0;
+}

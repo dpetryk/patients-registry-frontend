@@ -8,13 +8,18 @@ import { VisitDetailsComponent } from './components/visit-details/visit-details.
 import { AppRoutingModule} from "./app-routing.module";
 import { VisitDetailsEditComponent } from './components/visit-details-edit/visit-details-edit.component';
 import { ReactiveFormsModule } from "@angular/forms";
+import {PatientService} from "./services/patient.service";
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     VisitComponent,
     VisitDetailsComponent,
-    VisitDetailsEditComponent
+    VisitDetailsEditComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +27,7 @@ import { ReactiveFormsModule } from "@angular/forms";
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [VisitService],
+  providers: [VisitService, PatientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
