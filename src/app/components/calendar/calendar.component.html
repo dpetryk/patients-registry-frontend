@@ -2,69 +2,28 @@
   <h2>Book your visit:</h2>
   <br>
 
-  <div class="float-left"><a href="#"><- Previous week</a></div>
-  <div class="float-right"><a href="#">Next week -></a></div>
-
+  <div class="float-left"><a href="" (click)="prevWeek($event)"><- Previous week</a></div>
+  <div class="float-right"><a href="" (click)="nextWeek($event)">Next week -></a></div>
   <table class="table">
     <thead>
-    <td>time</td>
-    <td>Monday<br> <span class="small-date">1.07.2018</span></td>
-    <td>Tuesday<br> <span class="small-date">2.07.2018</span></td>
-    <td>Wednesday<br> <span class="small-date">3.07.2018</span></td>
-    <td>Thursday<br> <span class="small-date">4.07.2018</span></td>
-    <td>Friday<br> <span class="small-date">5.07.2018</span></td>
-    <td>Saturday<br> <span class="small-date">6.07.2018</span></td>
-    <td>Sunday<br> <span class="small-date">7.07.2018</span></td>
+    <td></td>
+    <td>{{weekDays[0] | date: 'EEEE'}}<br> <span class="small-date">{{weekDays[0] | date: "dd.MM.yyyy"}}</span></td>
+    <td>{{weekDays[1] | date: 'EEEE'}}<br> <span class="small-date">{{weekDays[1] | date: "dd.MM.yyyy"}}</span></td>
+    <td>{{weekDays[2] | date: 'EEEE'}}<br> <span class="small-date">{{weekDays[2] | date: "dd.MM.yyyy"}}</span></td>
+    <td>{{weekDays[3] | date: 'EEEE'}}<br> <span class="small-date">{{weekDays[3] | date: "dd.MM.yyyy"}}</span></td>
+    <td>{{weekDays[4] | date: 'EEEE'}}<br> <span class="small-date">{{weekDays[4] | date: "dd.MM.yyyy"}}</span></td>
+    <td>{{weekDays[5] | date: 'EEEE'}}<br> <span class="small-date">{{weekDays[5] | date: "dd.MM.yyyy"}}</span></td>
+    <td>{{weekDays[6] | date: 'EEEE'}}<br> <span class="small-date">{{weekDays[6] | date: "dd.MM.yyyy"}}</span></td>
     </thead>
     <tbody>
-    <tr>
-      <td>8:00 - 8:30</td>
-      <td class="slot"></td>
-      <td class="slot"></td>
-      <td class="slot"></td>
-      <td class="slot"></td>
-      <td class="slot"></td>
-      <td class="slot"></td>
-      <td class="slot-holiday"></td>
-    </tr>
-    <tr>
-      <td>8:30 - 9:00</td>
-      <td class="slot taken"></td>
-      <td class="slot"></td>
-      <td class="slot taken"></td>
-      <td class="slot"></td>
-      <td class="slot"></td>
-      <td class="slot"></td>
-      <td class="slot-holiday"></td>
-    </tr>
-    <tr>
-      <td>9:00 - 9:30</td>
-      <td class="slot"></td>
-      <td class="slot"></td>
-      <td class="slot"></td>
-      <td class="slot"></td>
-      <td class="slot"></td>
-      <td class="slot"></td>
-      <td class="slot-holiday"></td>
-    </tr>
-    <tr>
-      <td>9:30 - 10:00</td>
-      <td class="slot"></td>
-      <td class="slot"></td>
-      <td class="slot"></td>
-      <td class="slot"></td>
-      <td class="slot"></td>
-      <td class="slot"></td>
-      <td class="slot-holiday"></td>
-    </tr>
-    <tr>
-      <td>10:00 - 10:30</td>
-      <td class="slot"></td>
-      <td class="slot"></td>
-      <td class="slot"></td>
-      <td class="slot"></td>
-      <td class="slot"></td>
-      <td class="slot"></td>
+    <tr *ngFor="let time of timeTable">
+      <td>{{time}}</td>
+      <td class="slot" (click)="openSummary()"></td>
+      <td class="slot" (click)="openSummary()"></td>
+      <td class="slot" (click)="openSummary()"></td>
+      <td class="slot" (click)="openSummary()"></td>
+      <td class="slot" (click)="openSummary()"></td>
+      <td class="slot" (click)="openSummary()"></td>
       <td class="slot-holiday"></td>
     </tr>
     </tbody>

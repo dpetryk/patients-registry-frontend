@@ -12,6 +12,8 @@ import {PatientService} from "./services/patient.service";
 import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {CalendarComponent} from './components/calendar/calendar.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -21,16 +23,19 @@ import {CalendarComponent} from './components/calendar/calendar.component';
     VisitDetailsEditComponent,
     HeaderComponent,
     FooterComponent,
-    CalendarComponent
+    CalendarComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule.forRoot()
   ],
   providers: [VisitService, PatientService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ModalComponent]
 })
 export class AppModule {
 }

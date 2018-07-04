@@ -6,6 +6,7 @@
         Visit id
       </th>
       <th>Date</th>
+      <th>Time</th>
       <th>Patient name</th>
       <th>Patient surname</th>
       <th>Details</th>
@@ -14,7 +15,8 @@
     <tbody>
     <tr *ngFor="let visit of visits">
       <td>{{visit.id}}</td>
-      <td>{{visit.visitDate}}</td>
+      <td>{{visit.visitDate | date: 'yyyy-MM-dd'}}</td>
+      <td>{{visit.visitDate | date: 'H:mm' : 'UTC'}}</td>
       <td>{{visit.patient.firstName}}</td>
       <td>{{visit.patient.lastName}}</td>
       <td><a routerLink="{{visit.id}}">View details</a> </td>
