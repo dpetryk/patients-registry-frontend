@@ -7,11 +7,11 @@
 <div>
    <p class="modal-text">You have selected visit on:  <br/>
   <strong>{{selectedDate | date: 'EEEE'}} {{selectedDate | date: 'dd.MM.yyyy'}}</strong>
-  at <strong>{{selectedHour}}</strong></p>
+  at <strong>{{selectedHour}}</strong> {{selectedDate | date: 'dd.MM.yyyy hh:mm:' : 'UTC'}}</p>
   <p class="modal-text">Do you confirm your visit?</p>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn" (click)="activeModal.close('Confirm click');">Confirm</button>
+  <button align="left" type="button" class="btn btn-primary" (click)="activeModal.close('Confirm click');">Confirm</button>
   <button type="button" class="btn btn-light" (click)="activeModal.close('Close click')">Close</button>
 </div>
 

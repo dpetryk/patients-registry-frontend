@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import moment from 'moment-es6';
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +7,7 @@ import {Injectable} from '@angular/core';
 export class ModalService {
 
   selectedHour: string;
-  selectedDate;
+  selectedDate: moment.Moment;
 
 
   constructor() {
@@ -16,7 +17,7 @@ export class ModalService {
     this.selectedHour = hour;
   }
 
-  setSelectedDate(selectedDate: Date) {
+  setSelectedDate(selectedDate: moment.Moment) {
     this.selectedDate = selectedDate;
   }
 
