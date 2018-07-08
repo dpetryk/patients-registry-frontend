@@ -18,8 +18,8 @@
     <tbody>
     <tr *ngFor="let time of timeTable">
       <td>{{time}}</td>
-      <td class="slot" (click)="openSummary()"></td>
-      <td class="slot" (click)="openSummary()"></td>
+      <td class="slot" (click)="openSummary(); readSelectedHour($event); readSelectedDate($event)"></td>
+      <td class="slot" (click)="openSummary(); readSelectedHour($event); readSelectedDate($event)"></td>
       <td class="slot" (click)="openSummary()"></td>
       <td class="slot" (click)="openSummary()"></td>
       <td class="slot" (click)="openSummary()"></td>

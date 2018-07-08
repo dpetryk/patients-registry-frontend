@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ViewEncapsulation} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {ModalService} from "../../services/modal.service";
 
 @Component({
   selector: 'app-modal',
@@ -11,13 +12,15 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModalComponent implements OnInit {
 
-  title;
+  selectedDate: Date;
+  selectedHour: string;
 
-  constructor(private modalService: NgbModal, public activeModal: NgbActiveModal) {}
+  constructor(private ngbModal: NgbModal, public activeModal: NgbActiveModal, private modalService: ModalService) {}
 
   ngOnInit() {
+    this.selectedHour = this.modalService.selectedHour;
+    this.selectedDate = this.modalService.selectedDate;
   }
 
-  summarizeReservation(){}
 
 }

@@ -14,6 +14,7 @@ import {FooterComponent} from './components/footer/footer.component';
 import {CalendarComponent} from './components/calendar/calendar.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from './components/modal/modal.component';
+import {ModalService} from "./services/modal.service";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { ModalComponent } from './components/modal/modal.component';
     ReactiveFormsModule,
     NgbModule.forRoot()
   ],
-  providers: [VisitService, PatientService],
+  providers: [VisitService, PatientService, ModalService],
   bootstrap: [AppComponent],
   entryComponents: [ModalComponent]
 })

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import moment from 'moment-es6';
 import {ModalComponent} from "../modal/modal.component";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {ModalService} from "../../services/modal.service";
 
 @Component({
   selector: 'app-calendar',
@@ -17,7 +18,7 @@ export class CalendarComponent implements OnInit {
     '13:00 - 13:30', '13:30 - 14:00', '14:00 - 14:30', '14:30 - 15:00', '15:00 - 15:30', '15:30 - 16:00',
     '16:00 - 16:30', '16:30 - 17:00', '17:00 - 17:30', '17:30 - 18:00'];
 
-  constructor(private modalService: NgbModal) {
+  constructor(private ngbModal: NgbModal, private modalService: ModalService) {
   }
 
   ngOnInit() {
@@ -44,6 +45,21 @@ export class CalendarComponent implements OnInit {
   }
 
   openSummary() {
-    this.modalService.open(ModalComponent,{centered: true});
+    this.ngbModal.open(ModalComponent, {centered: true});
   }
+
+  readSelectedHour(event: MouseEvent): void {
+    this.modalService.setSelectedHour((<HTMLElement>event.target).parentElement.innerText);
+  }
+
+  readSelectedDate(event: MouseEvent) {
+    let selectedCell = (<HTMLElement>event.target);
+    let dayIndex: number = 0;
+    while ((selectedCell = <HTMLElement>selectedCell.previousSibling) != null) {
+      dayIndex++;
+    }
+    let selectedDate = this.weekDays[dayIndex - 1];
+    this.modalService.setSelectedDate(selectedDate);
+  }
+
 }
