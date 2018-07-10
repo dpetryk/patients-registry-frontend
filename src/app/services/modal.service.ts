@@ -1,24 +1,20 @@
 import {Injectable} from '@angular/core';
 import moment from 'moment-es6';
+import {Patient} from "../models/patient.model";
+import {Visit} from "../models/visit.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModalService {
 
-  selectedHour: string;
-  selectedDate: moment.Moment;
-
+  selectedTimestamp: moment.Moment;
 
   constructor() {
   }
 
-  setSelectedHour(hour: string) {
-    this.selectedHour = hour;
-  }
-
-  setSelectedDate(selectedDate: moment.Moment) {
-    this.selectedDate = selectedDate;
+  setSelectedTimestamp(selectedTimestamp: moment.Moment) {
+    this.selectedTimestamp = selectedTimestamp;
   }
 
 }
