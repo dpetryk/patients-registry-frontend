@@ -7,26 +7,16 @@
   <table class="table">
     <thead>
     <td></td>
-    <td>{{weekDays[0] | date: 'EEEE'}}<br> <span class="small-date">{{weekDays[0] | date: "dd.MM.yyyy"}}</span></td>
-    <td>{{weekDays[1] | date: 'EEEE'}}<br> <span class="small-date">{{weekDays[1] | date: "dd.MM.yyyy"}}</span></td>
-    <td>{{weekDays[2] | date: 'EEEE'}}<br> <span class="small-date">{{weekDays[2] | date: "dd.MM.yyyy"}}</span></td>
-    <td>{{weekDays[3] | date: 'EEEE'}}<br> <span class="small-date">{{weekDays[3] | date: "dd.MM.yyyy"}}</span></td>
-    <td>{{weekDays[4] | date: 'EEEE'}}<br> <span class="small-date">{{weekDays[4] | date: "dd.MM.yyyy"}}</span></td>
-    <td>{{weekDays[5] | date: 'EEEE'}}<br> <span class="small-date">{{weekDays[5] | date: "dd.MM.yyyy"}}</span></td>
-    <td>{{weekDays[6] | date: 'EEEE'}}<br> <span class="small-date">{{weekDays[6] | date: "dd.MM.yyyy"}}</span></td>
+    <td *ngFor="let weekDay of weekDays; let i = index">
+      {{weekDays[i] | date: 'EEEE'}}<br> <span class="small-date">{{weekDays[i] | date: "dd.MM.yyyy"}}</span>
+    </td>
     </thead>
     <tbody>
     <tr *ngFor="let time of timeTable">
       <td>{{time}}</td>
-      <td class="slot" (click)="openSummary(); readSelectedTimestamp($event)"></td>
-      <td class="slot" (click)="openSummary(); readSelectedTimestamp($event)"></td>
-      <td class="slot" (click)="openSummary(); readSelectedTimestamp($event)"></td>
-      <td class="slot" (click)="openSummary(); readSelectedTimestamp($event)"></td>
-      <td class="slot" (click)="openSummary(); readSelectedTimestamp($event)"></td>
-      <td class="slot" (click)="openSummary(); readSelectedTimestamp($event)"></td>
+      <td *ngFor="let workDay of [1,2,3,4,5,6]" class="slot" (click)="handleRegistryConfirmation($event)"></td>
       <td class="slot-holiday"></td>
     </tr>
     </tbody>
   </table>
-
 </div>

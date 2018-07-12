@@ -1,7 +1,7 @@
-import {Note} from "./note.model";
-import {Patient} from "./patient.model";
+import {Note} from './note.model';
+import {Patient} from './patient.model';
 
-export class Visit{
+export class Visit {
   id: number;
   visitDate: Date;
   notes: Note[];

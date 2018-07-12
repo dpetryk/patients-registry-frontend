@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {VisitService} from "../../services/visit.service";
-import {ActivatedRoute} from "@angular/router";
+import {VisitService} from '../../services/visit.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-visit-details',
@@ -20,14 +20,14 @@ export class VisitDetailsComponent implements OnInit {
   }
 
   getVisitById(id: number) {
-    console.log("im in getbyid")
+    console.log('im in getbyid');
     this.visitService.getVisitById(id).subscribe(
       data => {
         this.visit = data;
       },
       err => console.error(err),
       () => console.log(this.visit.id)
-    )
+    );
   }
 }
 

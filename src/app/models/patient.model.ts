@@ -1,6 +1,6 @@
-import {Address} from './address.model'
+import {Address} from './address.model';
 
-export class Patient{
+export class Patient {
   id: number;
   firstName: string;
   lastName: string;

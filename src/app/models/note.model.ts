@@ -1,4 +1,4 @@
-export class Note{
+export class Note {
   id: number;
   note: string;
   noteDate: string;
