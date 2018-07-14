@@ -4,7 +4,6 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {ModalService} from '../../services/modal.service';
 import moment from 'moment-es6';
-import {Patient} from '../../../core/models/patient.model';
 import {Visit} from '../../../core/models/visit.model';
 import {VisitService} from '../../../core/services/visit.service';
 
@@ -33,7 +32,7 @@ export class ModalComponent implements OnInit {
   }
 
   confirmVisit(visitDate: moment.Moment): void { // poprawić!!
-    //const patient: Patient = new Patient(1, 'Test', 'Testowy', '22222222222', undefined);
+    // const patient: Patient = new Patient(1, 'Test', 'Testowy', '22222222222', undefined);
     const visit = new Visit(undefined, null, [], null);
     this.visitService.createVisit(visit);
   }

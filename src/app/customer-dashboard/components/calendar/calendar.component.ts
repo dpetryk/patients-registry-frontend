@@ -66,6 +66,7 @@ export class CalendarComponent implements OnInit, AfterViewInit {
 
   handleRegistryConfirmation(event: MouseEvent): void {
     if ((<HTMLElement>event.target).classList.contains('taken')) {
+
       this.modalService.confirmation = false;
     } else {
       this.modalService.confirmation = true;
@@ -76,7 +77,7 @@ export class CalendarComponent implements OnInit, AfterViewInit {
 
   readRegisteredVisits() {
     this.visitService.getVisits().subscribe(visits => {
-      this.checkIfWeekContainsVisits(visits)
+      this.checkIfWeekContainsVisits(visits);
     });
   }
 
@@ -91,9 +92,9 @@ export class CalendarComponent implements OnInit, AfterViewInit {
   }
 
   assignSlotsArray() {
-    let slots = document.querySelectorAll('.slot')
+    let slots = document.querySelectorAll('.slot');
     let slots2D = [];
-    let index: number = 0;
+    let index = 0;
     for (let i = 0; i < this.timeTable.length; i++) {
       slots2D.push([]);
     }
@@ -107,16 +108,20 @@ export class CalendarComponent implements OnInit, AfterViewInit {
   }
 
   markTakenSlot(visit: Visit) {
-    let hourIndex, dayIndex: number = 0;
+    let hourIndex, dayIndex = 0;
     for (dayIndex; dayIndex < this.weekDays.length - 1; dayIndex++) {
       hourIndex = 0;
       if (new Date(visit.visitDate).getDate() === this.weekDays[dayIndex].toDate().getDate()) {
         hourIndex = (new Date(visit.visitDate).getUTCHours() - 8) * 2;
-        if (hourIndex < 0) continue;
+        if (hourIndex < 0) {
+          continue;
+        }
         if (new Date(visit.visitDate).getUTCMinutes() >= 30) {
           hourIndex++;
         }
-        if (hourIndex > this.slots.length) continue;
+        if (hourIndex > this.slots.length) {
+          continue;
+        }
         this.slots[hourIndex][dayIndex].classList.add('taken');
       } else {
       }
@@ -125,8 +130,8 @@ export class CalendarComponent implements OnInit, AfterViewInit {
 
   clearTakenSlots() {
     Array.from(document.querySelectorAll('.taken')).forEach((slot) => {
-      slot.classList.remove('taken')
-    })
+      slot.classList.remove('taken');
+    });
   }
 
 
@@ -156,12 +161,12 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     const selectedDate = moment(this.weekDays[dayIndex - 2]);
     const time = (<HTMLElement>event.target).parentElement.innerText;
     if (time.substr(1, 1) === ':') {
-      hoursToAdd = parseInt(time.substr(0, 1));
+      hoursToAdd = parseInt(time.substr(0, 1), 10);
       if (time.substr(2, 1) === '3') {
         hoursToAdd += 0.5;
       }
     } else {
-      hoursToAdd = parseInt(time.substr(0, 2));
+      hoursToAdd = parseInt(time.substr(0, 2), 10);
       if (time.substr(3, 1) === '3') {
         hoursToAdd += 0.5;
       }

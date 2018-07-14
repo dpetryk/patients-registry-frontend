@@ -1,14 +1,12 @@
 import {Injectable} from '@angular/core';
 import moment from 'moment-es6';
-import {Patient} from '../../core/models/patient.model';
-import {Visit} from '../../core/models/visit.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModalService {
 
-  selectedTimestamp: moment.Moment; //czy to nie powinno byc private?
+  selectedTimestamp: moment.Moment;
   confirmation: boolean;
 
   constructor() {

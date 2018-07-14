@@ -55,6 +55,6 @@ export class VisitDetailsEditComponent implements OnInit {
     } else {
       this.validMessage = 'Please fill out the form before submitting';
     }
-    //this.router.navigate(['visits']);
+    // this.router.navigate(['visits']);
   }
 }

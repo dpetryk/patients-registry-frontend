@@ -12,7 +12,7 @@ const httpOptions = {
 })
 export class VisitService {
 
-  visitsRestApiUrl: string = '/server/visits';
+  visitsRestApiUrl = '/server/visits';
 
   constructor(private httpClient: HttpClient) {
   }
@@ -22,7 +22,7 @@ export class VisitService {
   }
 
   getVisitById(id: number): Observable<Visit> {
-    return this.httpClient.get<Visit>(this.visitsRestApiUrl + "/" + id);
+    return this.httpClient.get<Visit>(this.visitsRestApiUrl + '/' + id);
   }
 
   createVisit(visit) { // poprawić!
@@ -30,7 +30,7 @@ export class VisitService {
     console.log('im in create visit');
     body = JSON.stringify(visit);
     console.log(body);
-    this.getVisitById(17).subscribe(visit => console.log('przykladowa wizyta' + JSON.stringify(visit)));
+//    this.getVisitById(17).subscribe(visit => console.log('przykladowa wizyta' + JSON.stringify(visit)));
     return this.httpClient.post<Visit>(this.visitsRestApiUrl, body, httpOptions);
     //
     // this.getVisitById(17).subscribe(visit => {
