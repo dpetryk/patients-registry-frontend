@@ -3,8 +3,8 @@ import moment from 'moment-es6';
 import {ModalComponent} from '../modal/modal.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ModalService} from '../../services/modal.service';
-import {VisitService} from '../../services/visit.service';
-import {Visit} from '../../models/visit.model';
+import {VisitService} from '../../../core/services/visit.service';
+import {Visit} from '../../../core/models/visit.model';
 
 @Component({
   selector: 'app-calendar',

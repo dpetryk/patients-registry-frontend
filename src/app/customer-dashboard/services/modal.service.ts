@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import moment from 'moment-es6';
-import {Patient} from '../models/patient.model';
-import {Visit} from '../models/visit.model';
+import {Patient} from '../../core/models/patient.model';
+import {Visit} from '../../core/models/visit.model';
 
 @Injectable({
   providedIn: 'root'

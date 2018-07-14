@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {VisitService} from '../../services/visit.service';
+import {VisitService} from '../../../core/services/visit.service';
 import {throwError} from 'rxjs';
-import {PatientService} from '../../services/patient.service';
+import {PatientService} from '../../../core/services/patient.service';
 import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-visit-details-edit',

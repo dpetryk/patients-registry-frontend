@@ -27,18 +27,18 @@ export class VisitService {
 
   createVisit(visit) { // poprawić!
     let body;
-    // console.log('im in create visit');
-    // const body = JSON.stringify(visit);
-    // console.log(body);
-    // this.getVisitById(17).subscribe(visit => console.log('przykladowa wizyta' + JSON.stringify(visit)));
-    // return this.httpClient.post<Visit>(this.visitsRestApiUrl, body, httpOptions);
-
-    this.getVisitById(17).subscribe(visit => {
-        body = JSON.stringify(visit);
-        console.log(body);
-        this.httpClient.post<Visit>(this.visitsRestApiUrl, visit, httpOptions);
-      },
-    );
+    console.log('im in create visit');
+    body = JSON.stringify(visit);
+    console.log(body);
+    this.getVisitById(17).subscribe(visit => console.log('przykladowa wizyta' + JSON.stringify(visit)));
+    return this.httpClient.post<Visit>(this.visitsRestApiUrl, body, httpOptions);
+    //
+    // this.getVisitById(17).subscribe(visit => {
+    //     body = JSON.stringify(visit);
+    //     console.log(body);
+    //     this.httpClient.post<Visit>(this.visitsRestApiUrl, visit, httpOptions);
+    //   },
+    // );
 
 
   }

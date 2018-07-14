@@ -1,10 +1,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {AppComponent} from './app.component';
-import {VisitDetailsComponent} from './components/visit-details/visit-details.component';
-import {VisitComponent} from './components/visit/visit.component';
-import {VisitDetailsEditComponent} from './components/visit-details-edit/visit-details-edit.component';
-import {CalendarComponent} from './components/calendar/calendar.component';
+import {VisitDetailsComponent} from './doctor-dashboard/components/visit-details/visit-details.component';
+import {VisitComponent} from './doctor-dashboard/components/visit/visit.component';
+import {VisitDetailsEditComponent} from './doctor-dashboard/components/visit-details-edit/visit-details-edit.component';
+import {CalendarComponent} from './customer-dashboard/components/calendar/calendar.component';
 
 
 const routes: Routes = [

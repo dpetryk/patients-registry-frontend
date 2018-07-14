@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {VisitService} from '../../services/visit.service';
+import {VisitService} from '../../../core/services/visit.service';
 
 @Component({
   selector: 'app-visit',
@@ -16,6 +16,7 @@ export class VisitComponent implements OnInit {
   ngOnInit() {
     this.getVisits();
   }
+
 
   getVisits() {
     this.visitService.getVisits().subscribe(

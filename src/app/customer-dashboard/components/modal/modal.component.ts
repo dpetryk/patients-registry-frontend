@@ -4,9 +4,9 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {ModalService} from '../../services/modal.service';
 import moment from 'moment-es6';
-import {Patient} from '../../models/patient.model';
-import {Visit} from '../../models/visit.model';
-import {VisitService} from '../../services/visit.service';
+import {Patient} from '../../../core/models/patient.model';
+import {Visit} from '../../../core/models/visit.model';
+import {VisitService} from '../../../core/services/visit.service';
 
 @Component({
   selector: 'app-modal',
