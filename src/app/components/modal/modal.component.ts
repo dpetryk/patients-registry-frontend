@@ -17,17 +17,24 @@ import {VisitService} from '../../services/visit.service';
 export class ModalComponent implements OnInit {
 
   selectedTimestamp: moment.Moment;
+  confirmation: boolean;
 
-  constructor(private ngbModal: NgbModal, public activeModal: NgbActiveModal, private modalService: ModalService, private visitService: VisitService) {
+
+  constructor(
+    private ngbModal: NgbModal,
+    public activeModal: NgbActiveModal,
+    private modalService: ModalService,
+    private visitService: VisitService) {
   }
 
   ngOnInit() {
     this.selectedTimestamp = this.modalService.selectedTimestamp;
+    this.confirmation = this.modalService.confirmation;
   }
 
   confirmVisit(visitDate: moment.Moment): void { // poprawić!!
-    const patient: Patient = new Patient(1, 'Test', 'Testowy', '22222222222', undefined);
-    const visit = new Visit(1, visitDate.toDate(), undefined, patient);
+    //const patient: Patient = new Patient(1, 'Test', 'Testowy', '22222222222', undefined);
+    const visit = new Visit(undefined, null, [], null);
     this.visitService.createVisit(visit);
   }
 

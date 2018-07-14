@@ -8,7 +8,8 @@ import {Visit} from '../models/visit.model';
 })
 export class ModalService {
 
-  selectedTimestamp: moment.Moment;
+  selectedTimestamp: moment.Moment; //czy to nie powinno byc private?
+  confirmation: boolean;
 
   constructor() {
   }
@@ -16,5 +17,6 @@ export class ModalService {
   setSelectedTimestamp(selectedTimestamp: moment.Moment) {
     this.selectedTimestamp = selectedTimestamp;
   }
+
 
 }

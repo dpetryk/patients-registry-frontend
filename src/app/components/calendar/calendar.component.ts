@@ -65,23 +65,26 @@ export class CalendarComponent implements OnInit, AfterViewInit {
   }
 
   handleRegistryConfirmation(event: MouseEvent): void {
+    if ((<HTMLElement>event.target).classList.contains('taken')) {
+      this.modalService.confirmation = false;
+    } else {
+      this.modalService.confirmation = true;
+    }
     this.readSelectedTimestamp(event);
     this.openSummary();
   }
 
-  readRegisteredVisits() {          // poprawić!!
+  readRegisteredVisits() {
     this.visitService.getVisits().subscribe(visits => {
       this.checkIfWeekContainsVisits(visits)
     });
   }
 
-  checkIfWeekContainsVisits(visits: Visit[]) {      //poprawić!!
+  checkIfWeekContainsVisits(visits: Visit[]) {
     for (let i = 0; i < visits.length; i++) {
-      console.log(visits[i].visitDate);
-      for (let j = 0; j < this.weekDays.length; j++) {
+      for (let j = 0; j < this.weekDays.length - 1; j++) {
         if (this.compareDatesWithoutTime(new Date(visits[i].visitDate), (<moment.Moment>this.weekDays[j]).toDate())) {
-          console.log("data sie zgadza")
-          this.markTakenSlot();
+          this.markTakenSlot(visits[i]);
         }
       }
     }
@@ -103,8 +106,21 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     this.slots = slots2D;
   }
 
-  markTakenSlot() {
-    this.slots[0][5].classList.add("taken");
+  markTakenSlot(visit: Visit) {
+    let hourIndex, dayIndex: number = 0;
+    for (dayIndex; dayIndex < this.weekDays.length - 1; dayIndex++) {
+      hourIndex = 0;
+      if (new Date(visit.visitDate).getDate() === this.weekDays[dayIndex].toDate().getDate()) {
+        hourIndex = (new Date(visit.visitDate).getUTCHours() - 8) * 2;
+        if (hourIndex < 0) continue;
+        if (new Date(visit.visitDate).getUTCMinutes() >= 30) {
+          hourIndex++;
+        }
+        if (hourIndex > this.slots.length) continue;
+        this.slots[hourIndex][dayIndex].classList.add('taken');
+      } else {
+      }
+    }
   }
 
   clearTakenSlots() {
@@ -118,7 +134,6 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     if (dateOne.getUTCFullYear() === dateTwo.getUTCFullYear()) {
       if (dateOne.getUTCMonth() === dateTwo.getUTCMonth()) {
         if (dateOne.getUTCDate() === dateTwo.getUTCDate()) {
-          console.log("zgadza sie?")
           return true;
         } else {
           return false;
