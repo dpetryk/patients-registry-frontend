@@ -15,19 +15,20 @@ export class VisitDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private visitService: VisitService) {
   }
 
+
   ngOnInit() {
     this.getVisitById(this.route.snapshot.params.id);
   }
 
   getVisitById(id: number) {
     console.log('im in getbyid');
-    this.visitService.getVisitById(id).subscribe(
-      data => {
-        this.visit = data;
-      },
-      err => console.error(err),
-      () => console.log(this.visit.id)
-    );
+      this.visitService.getVisitById(id).subscribe(
+        data => {
+          this.visit = data;
+        },
+        err => console.error(err),
+        () => console.log(this.visit.id)
+      );
   }
 }
 
