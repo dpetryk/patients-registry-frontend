@@ -14,7 +14,7 @@
     <tbody>
     <tr *ngFor="let time of timeTable">
       <td>{{time}}</td>
-      <td *ngFor="let workDay of [1,2,3,4,5,6]" class="slot" (click)="handleRegistryConfirmation($event)"></td>
+      <td *ngFor="let workDay of workDays" class="slot" (click)="handleRegistryConfirmation($event, workDay, time)"></td>
       <td class="slot-holiday"></td>
     </tr>
     </tbody>

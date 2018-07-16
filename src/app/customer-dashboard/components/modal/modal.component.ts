@@ -34,7 +34,9 @@ export class ModalComponent implements OnInit {
   confirmVisit(visitDate: moment.Moment): void { // poprawić!!
     // const patient: Patient = new Patient(1, 'Test', 'Testowy', '22222222222', undefined);
     const visit = new Visit(undefined, null, [], null);
-    this.visitService.createVisit(visit);
+    this.visitService.createVisit(visit).subscribe(data => {
+      alert('your visit was successfully booked' + data);
+    }, error => console.error('error'));
   }
 
 

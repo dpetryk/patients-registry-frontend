@@ -12,7 +12,7 @@ const httpOptions = {
 })
 export class VisitService {
 
-  visitsRestApiUrl = '/server/visits';
+  private visitsRestApiUrl = '/server/visits';
 
   constructor(private httpClient: HttpClient) {
   }

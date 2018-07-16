@@ -5,6 +5,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ModalService} from '../../services/modal.service';
 import {VisitService} from '../../../core/services/visit.service';
 import {Visit} from '../../../core/models/visit.model';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-calendar',
@@ -13,9 +14,11 @@ import {Visit} from '../../../core/models/visit.model';
 })
 export class CalendarComponent implements OnInit, AfterViewInit {
 
-  currentDate = moment().utc();
+  currentDate = moment();
   weekDays = [];
+  workDays = [];
   slots = [];
+  visits;
   timeTable = ['8:00 - 8:30', '8:30 - 9:00', '9:00 - 9:30', '9:30 - 10:00', '10:00 - 10:30',
     '10:30 - 11:00', '11:00 - 11:30', '11:30 - 12:00', '12:00 - 12:30', '12:30 - 13:00',
     '13:00 - 13:30', '13:30 - 14:00', '14:00 - 14:30', '14:30 - 15:00', '15:00 - 15:30', '15:30 - 16:00',
@@ -24,23 +27,36 @@ export class CalendarComponent implements OnInit, AfterViewInit {
   constructor(
     private ngbModal: NgbModal,
     private modalService: ModalService,
-    public visitService: VisitService
+    private visitService: VisitService,
+    private route: ActivatedRoute
   ) {
   }
 
   ngOnInit() {
     this.generateWeek();
+    this.route.data.subscribe(data => {
+      this.visits = data.visits;
+    })
+
   }
 
   ngAfterViewInit() {
     this.assignSlotsArray();
-    this.readRegisteredVisits();
+    this.checkIfWeekContainsVisits();
+    //this.readRegisteredVisits();
   }
 
   generateWeek(): void {
     for (let i = 0; i < 7; i++) {
       this.weekDays[i] = moment(this.currentDate).startOf('isoWeek');
       this.weekDays[i].add(i, 'day');
+      this.generateWorkDays();
+    }
+  }
+
+  generateWorkDays() {
+    for (let i = 0; i < this.weekDays.length - 1; i++) {
+      this.workDays[i] = this.weekDays[i];
     }
   }
 
@@ -49,7 +65,8 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     this.currentDate = moment(this.currentDate).subtract(1, 'weeks');
     this.generateWeek();
     this.clearTakenSlots();
-    this.readRegisteredVisits();
+    this.checkIfWeekContainsVisits();
+   // this.readRegisteredVisits();
   }
 
   nextWeek(event: MouseEvent): void {
@@ -57,35 +74,37 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     this.currentDate = moment(this.currentDate).add(1, 'weeks');
     this.generateWeek();
     this.clearTakenSlots();
-    this.readRegisteredVisits();
+    this.checkIfWeekContainsVisits();
+//    this.readRegisteredVisits();
   }
 
   openSummary(): void {
     this.ngbModal.open(ModalComponent, {centered: true});
   }
 
-  handleRegistryConfirmation(event: MouseEvent): void {
+  handleRegistryConfirmation(event: MouseEvent, workDay: moment.Moment, time: string): void {
     if ((<HTMLElement>event.target).classList.contains('taken')) {
 
       this.modalService.confirmation = false;
+      this.openSummary();
     } else {
       this.modalService.confirmation = true;
+      this.readSelectedTimestamp(workDay, time);
+      this.openSummary();
     }
-    this.readSelectedTimestamp(event);
-    this.openSummary();
   }
 
-  readRegisteredVisits() {
-    this.visitService.getVisits().subscribe(visits => {
-      this.checkIfWeekContainsVisits(visits);
-    });
-  }
+  // readRegisteredVisits() {
+  //   this.visitService.getVisits().subscribe(visits => {
+  //      this.checkIfWeekContainsVisits(visits);
+  //   });
+  // }
 
-  checkIfWeekContainsVisits(visits: Visit[]) {
-    for (let i = 0; i < visits.length; i++) {
+  checkIfWeekContainsVisits() {
+    for (let i = 0; i < this.visits.length; i++) {
       for (let j = 0; j < this.weekDays.length - 1; j++) {
-        if (this.compareDatesWithoutTime(new Date(visits[i].visitDate), (<moment.Moment>this.weekDays[j]).toDate())) {
-          this.markTakenSlot(visits[i]);
+        if (this.compareDatesWithoutTime(new Date(this.visits[i].visitDate), (<moment.Moment>this.weekDays[j]).toDate())) {
+          this.markTakenSlot(this.visits[i]);
         }
       }
     }
@@ -108,22 +127,27 @@ export class CalendarComponent implements OnInit, AfterViewInit {
   }
 
   markTakenSlot(visit: Visit) {
+    //console.log(visit);
     let hourIndex, dayIndex = 0;
     for (dayIndex; dayIndex < this.weekDays.length - 1; dayIndex++) {
       hourIndex = 0;
       if (new Date(visit.visitDate).getDate() === this.weekDays[dayIndex].toDate().getDate()) {
+        //console.log(new Date(visit.visitDate).getUTCHours())
         hourIndex = (new Date(visit.visitDate).getUTCHours() - 8) * 2;
+        //console.log(hourIndex);
         if (hourIndex < 0) {
           continue;
         }
-        if (new Date(visit.visitDate).getUTCMinutes() >= 30) {
+        if (new Date(visit.visitDate).getMinutes() >= 30) {
           hourIndex++;
         }
         if (hourIndex > this.slots.length) {
           continue;
         }
+        console.log(hourIndex, dayIndex);
+        console.log(visit);
+        console.log(this.slots);
         this.slots[hourIndex][dayIndex].classList.add('taken');
-      } else {
       }
     }
   }
@@ -133,7 +157,6 @@ export class CalendarComponent implements OnInit, AfterViewInit {
       slot.classList.remove('taken');
     });
   }
-
 
   compareDatesWithoutTime(dateOne: Date, dateTwo: Date): boolean {
     if (dateOne.getUTCFullYear() === dateTwo.getUTCFullYear()) {
@@ -151,15 +174,11 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     }
   }
 
-  readSelectedTimestamp(event: MouseEvent): void {
+  readSelectedTimestamp(workDay: moment.Moment, timex: string): void {
     let hoursToAdd = 0;
-    let selectedCell: HTMLElement = (<HTMLElement>event.target);
-    let dayIndex = 0;
-    while ((selectedCell = <HTMLElement>selectedCell.previousSibling)) {
-      dayIndex++;
-    }
-    const selectedDate = moment(this.weekDays[dayIndex - 2]);
-    const time = (<HTMLElement>event.target).parentElement.innerText;
+    let dayIndex = workDay.day()-1;
+     const selectedDate = moment(workDay);
+     const time = timex;
     if (time.substr(1, 1) === ':') {
       hoursToAdd = parseInt(time.substr(0, 1), 10);
       if (time.substr(2, 1) === '3') {
@@ -172,6 +191,7 @@ export class CalendarComponent implements OnInit, AfterViewInit {
       }
     }
     selectedDate.add(hoursToAdd, 'hours');
-    this.modalService.setSelectedTimestamp(selectedDate);
+    console.log(selectedDate);
+    this.modalService.selectedTimestamp = selectedDate;
   }
 }

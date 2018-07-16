@@ -12,9 +12,9 @@ export class ModalService {
   constructor() {
   }
 
-  setSelectedTimestamp(selectedTimestamp: moment.Moment) {
-    this.selectedTimestamp = selectedTimestamp;
-  }
+  // setSelectedTimestamp(selectedTimestamp: moment.Moment) {
+  //   this.selectedTimestamp = selectedTimestamp;
+  // }
 
 
 }

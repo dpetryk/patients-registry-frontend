@@ -10,14 +10,16 @@ const httpOptions = {
 })
 export class PatientService {
 
+  private apiUrl = '/server/patients/';
+
   constructor(private http: HttpClient) { }
 
-  public getPatients() {
-    return this.http.get('/server/patients');
+  getPatients() {
+    return this.http.get(this.apiUrl);
   }
 
   getPatientById(id: number) {
-    return this.http.get('/server/patients/' + id);
+    return this.http.get(this.apiUrl + id);
   }
 
 }

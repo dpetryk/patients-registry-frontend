@@ -4,6 +4,7 @@ import {VisitDetailsComponent} from './doctor-dashboard/components/visit-details
 import {VisitComponent} from './doctor-dashboard/components/visit/visit.component';
 import {VisitDetailsEditComponent} from './doctor-dashboard/components/visit-details-edit/visit-details-edit.component';
 import {CalendarComponent} from './customer-dashboard/components/calendar/calendar.component';
+import {VisitsResolver} from "./customer-dashboard/components/calendar/visits.resolver";
 
 
 const routes: Routes = [
@@ -11,7 +12,7 @@ const routes: Routes = [
   {path: 'visits', component: VisitComponent},
   {path: 'visits/create', component: VisitDetailsEditComponent},
   {path: 'visits/:id', component: VisitDetailsComponent},
-  {path: 'calendar', component: CalendarComponent}
+  {path: 'calendar', component: CalendarComponent, resolve: {visits: VisitsResolver}}
 ];
 
 
