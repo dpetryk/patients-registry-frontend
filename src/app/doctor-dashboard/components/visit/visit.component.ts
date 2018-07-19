@@ -1,5 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {VisitService} from '../../../core/services/visit.service';
+import moment from 'moment-es6';
+import {ActivatedRoute} from "@angular/router";
+import {FormsModule} from "@angular/forms";
+import {Visit} from "../../../core/models/visit.model";
 
 @Component({
   selector: 'app-visit',
@@ -8,15 +12,57 @@ import {VisitService} from '../../../core/services/visit.service';
 })
 export class VisitComponent implements OnInit {
 
-  public visits;
+  visits;
+  visitsByDay;
+  currentDate;
+  _filterString;
+  filteredVisitsByDay;
 
-  constructor(private visitService: VisitService) {
+  get filterString(): string {
+    return this._filterString;
+  }
+
+  set filterString(value: string) {
+    this._filterString = value;
+    this.filteredVisitsByDay = this.filterString ? this.performFilter(this.filterString) : this.visitsByDay;
+  }
+
+  constructor(
+    private visitService: VisitService,
+    private route: ActivatedRoute
+  ) {
   }
 
   ngOnInit() {
-    this.getVisits();
+    this.currentDate = moment();
+    this.route.data.subscribe(data => {
+      this.visits = data.visits;
+    });
+    this.visitsByDay = this.viewVisitsByDay();
+    this.filteredVisitsByDay = this.visitsByDay;
   }
 
+  todayVisits() {
+    this.currentDate = moment();
+    this.viewVisitsByDay();
+  }
+
+  nextDayVisits() {
+    this.currentDate.add(1, 'days');
+    this.viewVisitsByDay();
+    this.refreshFilter();
+  }
+
+  prevDayVisits() {
+    this.currentDate.subtract(1, 'days');
+    this.viewVisitsByDay();
+    this.refreshFilter();
+  }
+
+  refreshFilter(){
+    this.filteredVisitsByDay = this.visitsByDay;
+    this.filteredVisitsByDay = this.filterString ? this.performFilter(this.filterString) : this.visitsByDay;
+  }
 
   getVisits() {
     this.visitService.getVisits().subscribe(
@@ -25,9 +71,23 @@ export class VisitComponent implements OnInit {
       },
       err => {
         console.error(err);
-      },
-      () => console.log('visits loaded')
+      }
     );
+  }
+
+  viewVisitsByDay() {
+    let visitsOfDay = [];
+    this.visits.forEach(visit => {
+      if (moment(visit.visitDate).isSame(this.currentDate, "day")) {
+        visitsOfDay.push(visit);
+      }
+    });
+    return this.visitsByDay = visitsOfDay;
+  }
+
+  performFilter(filterBy: string): Visit[] {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.visitsByDay.filter((visit: Visit) => visit.patient.lastName.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 
 }

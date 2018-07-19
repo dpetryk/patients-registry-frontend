@@ -11,8 +11,8 @@
     <div class="col" align="right">
 
       Patient address: <br>ul. {{visit.patient.address.street}}
-        {{visit.patient.address.house}}/{{visit.patient.address.apartment}}<br> {{visit.patient.address.postal}}
-        {{visit.patient.address.city}}
+      {{visit.patient.address.house}}/{{visit.patient.address.apartment}}<br> {{visit.patient.address.postal}}
+      {{visit.patient.address.city}}
     </div>
   </div>
   <hr>
@@ -28,7 +28,22 @@
         {{note.noteDate}}
       </div>
       <div class="card-body">
-        {{note.note}}
+        <div class="row">
+          <table class="table">
+            <thead>
+            <td>Description:</td>
+            <td>Prescriptions:</td>
+            </thead>
+            <tr>
+              <td>
+                {{note.note}}
+              </td>
+              <td style="width: 20%">
+                {{note.prescriptions}}blabla
+              </td>
+            </tr>
+          </table>
+        </div>
         <div align="right"><a routerLink="">edit</a></div>
       </div>
     </div>

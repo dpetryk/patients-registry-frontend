@@ -1,25 +1,32 @@
 <div class="container">
+  <div class="row">
+    <div class="col-6">
+      <button class="btn btn-light" (click)="prevDayVisits()">< Prev. day</button>
+      <button class="btn btn-primary" (click)="todayVisits()">Today</button>
+      <button class="btn btn-light" (click)="nextDayVisits()">Next day ></button>
+    </div>
+    <div class="col-3 offset-3">
+      <input type="text" class="form-control" [(ngModel)]='filterString' placeholder="Search by name...">
+    </div>
+  </div>
+<br>
   <table class="table table-hover">
     <thead>
     <tr>
-      <th>
-        Visit id
-      </th>
-      <th>Date</th>
       <th>Time</th>
-      <th>Patient name</th>
+      <th>Date</th>
       <th>Patient surname</th>
+      <th>Patient name</th>
       <th>Details</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let visit of visits">
-      <td>{{visit.id}}</td>
-      <td>{{visit.visitDate | date: 'yyyy-MM-dd'}}</td>
+    <tr *ngFor="let visit of filteredVisitsByDay">
       <td>{{visit.visitDate | date: 'H:mm' : 'UTC'}}</td>
-      <td>{{visit.patient.firstName}}</td>
+      <td>{{visit.visitDate | date: 'yyyy-MM-dd'}}</td>
       <td>{{visit.patient.lastName}}</td>
-      <td><a routerLink="{{visit.id}}">View details</a> </td>
+      <td>{{visit.patient.firstName}}</td>
+      <td><a routerLink="../patients/{{visit.patient.id}}">View details</a></td>
     </tr>
     </tbody>
   </table>

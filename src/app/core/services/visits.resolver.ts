@@ -3,8 +3,8 @@ import {Injectable} from '@angular/core';
 
 import {Observable} from 'rxjs';
 
-import {Visit} from '../../../core/models/visit.model';
-import {VisitService} from '../../../core/services/visit.service';
+import {Visit} from '../models/visit.model';
+import {VisitService} from './visit.service';
 
 @Injectable({
   providedIn: 'root'

@@ -37,13 +37,11 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     this.route.data.subscribe(data => {
       this.visits = data.visits;
     })
-
   }
 
   ngAfterViewInit() {
     this.assignSlotsArray();
     this.checkIfWeekContainsVisits();
-    //this.readRegisteredVisits();
   }
 
   generateWeek(): void {
@@ -60,22 +58,21 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     }
   }
 
-  prevWeek(event: MouseEvent): void {
+  prevWeek(event: MouseEvent): void { //poprawic bo nie zaznacza zajetych slotow
     event.preventDefault();
     this.currentDate = moment(this.currentDate).subtract(1, 'weeks');
     this.generateWeek();
     this.clearTakenSlots();
     this.checkIfWeekContainsVisits();
-   // this.readRegisteredVisits();
+    // this.readRegisteredVisits();
   }
 
-  nextWeek(event: MouseEvent): void {
+  nextWeek(event: MouseEvent): void { //poprawic bo nie zaznacza zajetych slotow
     event.preventDefault();
     this.currentDate = moment(this.currentDate).add(1, 'weeks');
     this.generateWeek();
     this.clearTakenSlots();
     this.checkIfWeekContainsVisits();
-//    this.readRegisteredVisits();
   }
 
   openSummary(): void {
@@ -94,16 +91,10 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     }
   }
 
-  // readRegisteredVisits() {
-  //   this.visitService.getVisits().subscribe(visits => {
-  //      this.checkIfWeekContainsVisits(visits);
-  //   });
-  // }
-
   checkIfWeekContainsVisits() {
     for (let i = 0; i < this.visits.length; i++) {
       for (let j = 0; j < this.weekDays.length - 1; j++) {
-        if (this.compareDatesWithoutTime(new Date(this.visits[i].visitDate), (<moment.Moment>this.weekDays[j]).toDate())) {
+        if (moment(this.visits[i]).isSame(this.weekDays[j],"day")){
           this.markTakenSlot(this.visits[i]);
         }
       }
@@ -127,14 +118,11 @@ export class CalendarComponent implements OnInit, AfterViewInit {
   }
 
   markTakenSlot(visit: Visit) {
-    //console.log(visit);
     let hourIndex, dayIndex = 0;
     for (dayIndex; dayIndex < this.weekDays.length - 1; dayIndex++) {
       hourIndex = 0;
       if (new Date(visit.visitDate).getDate() === this.weekDays[dayIndex].toDate().getDate()) {
-        //console.log(new Date(visit.visitDate).getUTCHours())
         hourIndex = (new Date(visit.visitDate).getUTCHours() - 8) * 2;
-        //console.log(hourIndex);
         if (hourIndex < 0) {
           continue;
         }
@@ -144,9 +132,6 @@ export class CalendarComponent implements OnInit, AfterViewInit {
         if (hourIndex > this.slots.length) {
           continue;
         }
-        console.log(hourIndex, dayIndex);
-        console.log(visit);
-        console.log(this.slots);
         this.slots[hourIndex][dayIndex].classList.add('taken');
       }
     }
@@ -158,27 +143,11 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     });
   }
 
-  compareDatesWithoutTime(dateOne: Date, dateTwo: Date): boolean {
-    if (dateOne.getUTCFullYear() === dateTwo.getUTCFullYear()) {
-      if (dateOne.getUTCMonth() === dateTwo.getUTCMonth()) {
-        if (dateOne.getUTCDate() === dateTwo.getUTCDate()) {
-          return true;
-        } else {
-          return false;
-        }
-      } else {
-        return false;
-      }
-    } else {
-      return false;
-    }
-  }
-
   readSelectedTimestamp(workDay: moment.Moment, timex: string): void {
     let hoursToAdd = 0;
-    let dayIndex = workDay.day()-1;
-     const selectedDate = moment(workDay);
-     const time = timex;
+    let dayIndex = workDay.day() - 1;
+    const selectedDate = moment(workDay);
+    const time = timex;
     if (time.substr(1, 1) === ':') {
       hoursToAdd = parseInt(time.substr(0, 1), 10);
       if (time.substr(2, 1) === '3') {
@@ -191,7 +160,6 @@ export class CalendarComponent implements OnInit, AfterViewInit {
       }
     }
     selectedDate.add(hoursToAdd, 'hours');
-    console.log(selectedDate);
     this.modalService.selectedTimestamp = selectedDate;
   }
 }

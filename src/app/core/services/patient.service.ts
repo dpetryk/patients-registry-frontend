@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Patient} from "../models/patient.model";
+import {Observable} from "rxjs";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -14,12 +16,12 @@ export class PatientService {
 
   constructor(private http: HttpClient) { }
 
-  getPatients() {
-    return this.http.get(this.apiUrl);
+  getPatients(): Observable<Patient[]> {
+    return this.http.get<Patient[]>(this.apiUrl);
   }
 
   getPatientById(id: number) {
-    return this.http.get(this.apiUrl + id);
+    return this.http.get<Patient>(this.apiUrl + id);
   }
 
 }

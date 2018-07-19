@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {VisitService} from '../../../core/services/visit.service';
 import {ActivatedRoute} from '@angular/router';
-
 import {Visit} from "../../../core/models/visit.model";
 
 @Component({
@@ -12,7 +11,6 @@ import {Visit} from "../../../core/models/visit.model";
 export class VisitDetailsComponent implements OnInit {
 
   visit: Visit;
-  visitId;
 
   constructor(private route: ActivatedRoute, private visitService: VisitService) {
   }

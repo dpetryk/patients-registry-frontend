@@ -31,9 +31,9 @@ export class ModalComponent implements OnInit {
     this.confirmation = this.modalService.confirmation;
   }
 
-  confirmVisit(visitDate: moment.Moment): void { // poprawić!!
-    // const patient: Patient = new Patient(1, 'Test', 'Testowy', '22222222222', undefined);
-    const visit = new Visit(undefined, null, [], null);
+  confirmVisit(visitDate: moment.Moment): void {
+    console.log(visitDate.toDate())// poprawić!!
+    const visit = new Visit(undefined, visitDate.toDate(), '',  '', null);
     this.visitService.createVisit(visit).subscribe(data => {
       alert('your visit was successfully booked' + data);
     }, error => console.error('error'));

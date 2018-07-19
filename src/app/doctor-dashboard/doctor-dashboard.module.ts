@@ -7,6 +7,8 @@ import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import {VisitDetailsEditComponent} from './components/visit-details-edit/visit-details-edit.component';
 import {SharedModule} from '../shared/shared.module';
+import { PatientDetailsComponent } from './components/patient-details/patient-details.component';
+import { VisitHistoryComponent } from './components/visit-history/visit-history.component';
 
 @NgModule({
   imports: [
@@ -18,6 +20,8 @@ import {SharedModule} from '../shared/shared.module';
   declarations: [
     VisitComponent,
     VisitDetailsComponent,
-    VisitDetailsEditComponent]
+    VisitDetailsEditComponent,
+    PatientDetailsComponent,
+    VisitHistoryComponent]
 })
 export class DoctorDashboardModule { }

@@ -1,0 +1,33 @@
+<div *ngIf="visitsOfPatient" align="right">
+  <h3> Last visit date: {{visitsOfPatient[0].visitDate| date: 'dd.MM.yyyy'}}</h3> <!--write last visit date-->
+</div>
+<br>
+Visits history:
+<br/>
+<br/>
+<div *ngFor="let visit of visitsOfPatient" class="card">
+  <div>
+    <div class="card-header">
+      {{visit.visitDate | date: "dd.MM.yyyy"}}
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <table class="table">
+          <thead>
+          <td>Description:</td>
+          <td>Prescriptions:</td>
+          </thead>
+          <tr>
+            <td>
+              {{visit.notes}}
+            </td>
+            <td style="width: 20%">
+              {{visit.prescriptions}}
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div align="right"><a routerLink="">edit</a></div>
+    </div>
+  </div>
+</div>
