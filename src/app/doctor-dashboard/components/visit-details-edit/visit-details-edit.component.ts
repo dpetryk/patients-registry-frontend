@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-visit-details-edit',
   templateUrl: './visit-details-edit.component.html',
-  styleUrls: ['./visit-details-edit.component.css']
+  styleUrls: ['./visit-details-edit.component.scss']
 })
 export class VisitDetailsEditComponent implements OnInit {
 

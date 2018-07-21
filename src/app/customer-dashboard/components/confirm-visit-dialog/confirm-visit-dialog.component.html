@@ -1,0 +1,32 @@
+<div *ngIf="confirmation">
+  <h2 mat-dialog-title>Visit confirmation</h2>
+  <mat-dialog-content>
+    <p>You have selected visit on: <br/>
+      <strong>{{selectedTimestamp | date: 'EEEE'}} {{selectedTimestamp | date: 'dd.MM.yyyy'}}</strong>
+      at <strong>{{selectedTimestamp | date: 'HH:mm'}}</strong></p>
+    <p class="modal-text">Do you confirm your visit?</p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+
+    <button mat-button color="primary" (click)="confirmVisit(selectedTimestamp)">
+      <mat-icon>save</mat-icon>
+      Confirm
+    </button>
+    <button mat-button color="primary" (click)="dismiss()">
+      <mat-icon>cancel</mat-icon>
+      Cancel
+    </button>
+  </mat-dialog-actions>
+</div>
+<div *ngIf="!confirmation">
+  <h2 mat-dialog-title>Registration unavailable</h2>
+  <mat-dialog-content>
+    <p class="modal-text">Unfortunately this slot is taken.
+    <p class="modal-text">Please select free slot.</p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button color="primary" (click)="dismiss()">
+      OK
+    </button>
+  </mat-dialog-actions>
+</div>

@@ -6,7 +6,7 @@ import {Visit} from "../../../core/models/visit.model";
 @Component({
   selector: 'app-visit-details',
   templateUrl: './visit-details.component.html',
-  styleUrls: ['./visit-details.component.css']
+  styleUrls: ['./visit-details.component.scss']
 })
 export class VisitDetailsComponent implements OnInit {
 

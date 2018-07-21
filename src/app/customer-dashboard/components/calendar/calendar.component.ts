@@ -1,16 +1,17 @@
 import {Component, OnInit, AfterViewInit} from '@angular/core';
-import moment from 'moment-es6';
-import {ModalComponent} from '../modal/modal.component';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {ModalService} from '../../services/modal.service';
+import {MatDialog} from '@angular/material';
+import {ActivatedRoute} from "@angular/router";
+
 import {VisitService} from '../../../core/services/visit.service';
 import {Visit} from '../../../core/models/visit.model';
-import {ActivatedRoute} from "@angular/router";
+import {ConfirmVisitDialogComponent} from "../confirm-visit-dialog/confirm-visit-dialog.component";
+import {DialogService} from "../../services/dialog.service";
+import moment from 'moment-es6';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css']
+  styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit, AfterViewInit {
 
@@ -25,12 +26,21 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     '16:00 - 16:30', '16:30 - 17:00', '17:00 - 17:30', '17:30 - 18:00'];
 
   constructor(
-    private ngbModal: NgbModal,
-    private modalService: ModalService,
+    private dialogService: DialogService,
     private visitService: VisitService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: MatDialog
   ) {
   }
+
+openConfirmVisitDialog(){
+    let dialogRef = this.dialog.open(ConfirmVisitDialogComponent, {
+      width: '450px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog was closed', result);
+    });
+}
 
   ngOnInit() {
     this.generateWeek();
@@ -64,7 +74,6 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     this.generateWeek();
     this.clearTakenSlots();
     this.checkIfWeekContainsVisits();
-    // this.readRegisteredVisits();
   }
 
   nextWeek(event: MouseEvent): void { //poprawic bo nie zaznacza zajetych slotow
@@ -75,19 +84,14 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     this.checkIfWeekContainsVisits();
   }
 
-  openSummary(): void {
-    this.ngbModal.open(ModalComponent, {centered: true});
-  }
-
   handleRegistryConfirmation(event: MouseEvent, workDay: moment.Moment, time: string): void {
     if ((<HTMLElement>event.target).classList.contains('taken')) {
-
-      this.modalService.confirmation = false;
-      this.openSummary();
+      this.dialogService.confirmation = false;
+      this.openConfirmVisitDialog();
     } else {
-      this.modalService.confirmation = true;
+      this.dialogService.confirmation = true;
       this.readSelectedTimestamp(workDay, time);
-      this.openSummary();
+      this.openConfirmVisitDialog();
     }
   }
 
@@ -160,6 +164,6 @@ export class CalendarComponent implements OnInit, AfterViewInit {
       }
     }
     selectedDate.add(hoursToAdd, 'hours');
-    this.modalService.selectedTimestamp = selectedDate;
+    this.dialogService.selectedTimestamp = selectedDate;
   }
 }

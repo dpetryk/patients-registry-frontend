@@ -1,17 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Patients Registry</a>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="visits" href="#">Registered visits</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="calendar">Book a visit</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="patients">Patients</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-<br>
+<mat-toolbar color="primary">
+  <span>Patients registry</span>
+  <button mat-button routerLink="visits">Registered visits</button>
+  <button mat-button routerLink="calendar">Book a visit</button>
+</mat-toolbar>
