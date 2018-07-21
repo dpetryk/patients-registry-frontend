@@ -1,4 +1,28 @@
-@import "~@angular/material/prebuilt-themes/purple-green.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@media (min-width: 576px) {
+  .main-content {
+    max-width: 540px
+  }
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    max-width: 720px
+  }
+}
+
+@media (min-width: 992px) {
+  .main-content {
+    max-width: 960px
+  }
+}
+
+@media (min-width: 1200px) {
+  .main-content {
+    max-width: 1140px
+  }
+}
 
 body {
   font-family: sans-serif;
@@ -9,7 +33,7 @@ body {
   margin: 0 0 24px;
 }
 
-main-content{
+.main-content{
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
@@ -17,3 +41,7 @@ main-content{
     margin-left: auto
   }
 
+.container-flex{
+  display: flex;
+  justify-content: space-between;
+}

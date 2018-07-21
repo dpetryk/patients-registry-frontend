@@ -1,5 +1,5 @@
 import {Component, OnInit, AfterViewInit} from '@angular/core';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatSnackBar} from '@angular/material';
 import {ActivatedRoute} from "@angular/router";
 
 import {VisitService} from '../../../core/services/visit.service';
@@ -7,6 +7,7 @@ import {Visit} from '../../../core/models/visit.model';
 import {ConfirmVisitDialogComponent} from "../confirm-visit-dialog/confirm-visit-dialog.component";
 import {DialogService} from "../../services/dialog.service";
 import moment from 'moment-es6';
+import {SnackBarComponent} from "../snack-bar/snack-bar.component";
 
 @Component({
   selector: 'app-calendar',
@@ -29,18 +30,29 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     private dialogService: DialogService,
     private visitService: VisitService,
     private route: ActivatedRoute,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {
   }
 
-openConfirmVisitDialog(){
+  openConfirmVisitDialog() {
     let dialogRef = this.dialog.open(ConfirmVisitDialogComponent, {
-      width: '450px'
+      width: '400px',
     });
+
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog was closed', result);
+    if(result){
+      this.openSnackBar('Visit registered');
+    }
     });
-}
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.openFromComponent(SnackBarComponent, {
+      duration: 4000,
+    })
+  }
 
   ngOnInit() {
     this.generateWeek();
@@ -98,7 +110,7 @@ openConfirmVisitDialog(){
   checkIfWeekContainsVisits() {
     for (let i = 0; i < this.visits.length; i++) {
       for (let j = 0; j < this.weekDays.length - 1; j++) {
-        if (moment(this.visits[i]).isSame(this.weekDays[j],"day")){
+        if (moment(this.visits[i]).isSame(this.weekDays[j], "day")) {
           this.markTakenSlot(this.visits[i]);
         }
       }
@@ -167,3 +179,4 @@ openConfirmVisitDialog(){
     this.dialogService.selectedTimestamp = selectedDate;
   }
 }
+

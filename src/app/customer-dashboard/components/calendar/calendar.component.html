@@ -1,35 +1,32 @@
 <div class="main-content">
   <h2>Book your visit:</h2>
   <br>
-  <div class="container">
-    <button mat-stroked-button (click)="prevWeek($event)">
-      <mat-icon>arrow_left</mat-icon>
+  <div class="container-flex">
+    <button mat-raised-button (click)="prevWeek($event)">
+      <mat-icon>chevron_left</mat-icon>
       Previous week
     </button>
-    <button mat-stroked-button (click)="nextWeek($event)">
+    <button mat-raised-button (click)="nextWeek($event)">
       Next week
-      <mat-icon>arrow_right</mat-icon>
+      <mat-icon>chevron_right</mat-icon>
     </button>
   </div>
-  <div class="table-container">
-    <table class="table">
-      <thead>
-      <td></td>
-      <td *ngFor="let weekDay of weekDays; let i = index">
-        {{weekDays[i] | date: 'EEEE'}}<br> <span class="small-date">{{weekDays[i] | date: "dd.MM.yyyy"}}</span>
-      </td>
-      </thead>
-      <tbody>
-      <tr *ngFor="let time of timeTable">
-        <td>{{time}}</td>
-        <td *ngFor="let workDay of workDays" class="slot"
-            (click)="handleRegistryConfirmation($event, workDay, time)"></td>
-        <!--<td *ngFor="let workDay of workDays" class="slot" (click)="openConfirmVisitDialog(workDay, time)"></td>-->
-
-        <td class="slot-holiday"></td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
+  <br>
+  <table class="table shadow">
+    <thead>
+    <th></th>
+    <th *ngFor="let weekDay of weekDays; let i = index">
+      {{weekDays[i] | date: 'EEEE'}}<br> <span class="small-date">{{weekDays[i] | date: "dd.MM.yyyy"}}</span>
+    </th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let time of timeTable">
+      <td>{{time}}</td>
+      <td *ngFor="let workDay of workDays" class="slot"
+          (click)="handleRegistryConfirmation($event, workDay, time)"></td>
+      <td class="slot-holiday"></td>
+    </tr>
+    </tbody>
+  </table>
 
 </div>

@@ -32,7 +32,7 @@ export class ConfirmVisitDialogComponent implements OnInit {
         console.log(data);
       },
       error => console.error(error));
-    this.dialogRef.close(null)
+    this.dialogRef.close(visit)
   }
 
   dismiss() {
