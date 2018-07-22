@@ -20,6 +20,7 @@ export class VisitService {
 
   getVisits(): Observable<Visit[]> {
     return this.httpClient.get<Visit[]>(this.visitsRestApiUrl + '/visits');
+
   }
 
   getVisitById(id: number): Observable<Visit> {

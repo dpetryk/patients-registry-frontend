@@ -1,16 +1,32 @@
-<div class="container">
-  <div class="row">
-    <div class="col-6">
-      <button class="btn btn-light" (click)="prevDayVisits()">< Prev. day</button>
-      <button class="btn btn-primary" (click)="todayVisits()">Today</button>
-      <button class="btn btn-light" (click)="nextDayVisits()">Next day ></button>
-    </div>
-    <div class="col-3 offset-3">
-      <input type="text" class="form-control" [(ngModel)]='filterString' placeholder="Search by name...">
-    </div>
+<div class="main-content">
+  <h1>List of visits</h1>
+  <h2>{{currentDate | date: 'dd.MM.yyyy'}}</h2>
+
+  <div>
+    <button class="prev-next-btn" mat-raised-button color="primary" (click)="prevDayVisits()">
+      <mat-icon>chevron_left</mat-icon>
+      Previous day
+    </button>
   </div>
-<br>
-  <table class="table table-hover">
+  <div>
+    <button class="prev-next-btn" mat-raised-button color="primary" (click)="nextDayVisits()">
+      Next day
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+  <div>
+    <mat-form-field class="date-picker">
+      <input matInput [matDatepicker]="picker" placeholder="Select date"
+             (dateChange)="dateChangeEvent($event)" autocomplete="off" >
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <mat-form-field class="right">
+    <input matInput autocomplete="off" [(ngModel)]='filterString' placeholder="Filter by surname">
+  </mat-form-field>
+  <br>
+  <table class="table shadow">
     <thead>
     <tr>
       <th>Time</th>
@@ -26,7 +42,9 @@
       <td>{{visit.visitDate | date: 'yyyy-MM-dd'}}</td>
       <td>{{visit.patient.lastName}}</td>
       <td>{{visit.patient.firstName}}</td>
-      <td><a routerLink="../patients/{{visit.patient.id}}">View details</a></td>
+      <td><a routerLink="../patients/{{visit.patient.id}}">
+        <mat-icon color="primary">chrome_reader_mode</mat-icon>
+      </a></td>
     </tr>
     </tbody>
   </table>

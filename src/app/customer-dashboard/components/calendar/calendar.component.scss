@@ -16,25 +16,22 @@ table {
 }
 
 .table td {
-  font-size: 14px;
-  line-height: 15px;
+  line-height: 10px;
 }
 
-.table td {
-  font-size: 14px;
-}
-
-@media (max-width: 1200px) {
-  .table td {
-    font-size: 11px
-  }
+.prev-next-btn{
+  float:left;
+  width: 150px;
+  margin-right:15px;
 }
 
 .table thead th {
   vertical-align: bottom;
   border-bottom: 2px solid #dee2e6;
   text-align: center;
-  font-weight: normal;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.54);
 }
 
 .table tbody + tbody {
@@ -49,24 +46,24 @@ table {
 }
 
 .slot-holiday {
-  background-color: darkgray;
+  background-color: #3f51b5;
   cursor: default;
   transition: 0.2s;
 }
 
 .slot-holiday:hover {
-  background-color: dimgray;
+  background-color: #3f51b5;
   cursor: default;
   box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3);
 }
 
 .slot:hover {
-  background-color: cornflowerblue;
+  background-color: #3f51b5;
   box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3);
 }
 
 .taken{
-  background-color: lightcoral;
+  background-color: #f44336;
 }
 
 .taken:hover {
@@ -76,7 +73,15 @@ table {
 
 .small-date{
   font-size: 12px;
+  font-weight: 500;
   color: #c6c8ca;
+}
+
+.time{
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.54);
+  width: 80px;
 }
 
 .shadow {

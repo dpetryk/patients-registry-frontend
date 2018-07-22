@@ -1,3 +1,22 @@
-.card{
+.card {
+  max-width: 100%;
   margin: 20px;
+}
+
+.inline {
+  float: left;
+  margin-left: 10px;
+  padding-left: 0px;
+}
+
+.right-box {
+  border-left-style: solid;
+  border-left-color: #d3d9df;
+  border-left-width: 1px;
+  padding: 5px;
+  width: 50%;
+}
+
+.note-content{
+  color: rgba(0,0,0,.54);
 }

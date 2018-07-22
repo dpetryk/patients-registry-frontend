@@ -5,29 +5,28 @@
 Visits history:
 <br/>
 <br/>
+
 <div *ngFor="let visit of visitsOfPatient" class="card">
-  <div>
-    <div class="card-header">
-      {{visit.visitDate | date: "dd.MM.yyyy"}}
-    </div>
-    <div class="card-body">
-      <div class="row">
-        <table class="table">
-          <thead>
-          <td>Description:</td>
-          <td>Prescriptions:</td>
-          </thead>
-          <tr>
-            <td>
-              {{visit.notes}}
-            </td>
-            <td style="width: 20%">
-              {{visit.prescriptions}}
-            </td>
-          </tr>
-        </table>
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-subtitle>{{visit.visitDate | date: "dd.MM.yyyy"}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="container-flex">
+        <div class="inline">
+          <span class="note-content"> Description:<br></span>
+          {{visit.notes}}
+        </div>
+        <div class="inline right-box">
+         <span class="note-content"> Prescriptions:<br></span>
+          {{visit.prescriptions}}
+        </div>
       </div>
-      <div align="right"><a routerLink="">edit</a></div>
-    </div>
-  </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
 </div>
+

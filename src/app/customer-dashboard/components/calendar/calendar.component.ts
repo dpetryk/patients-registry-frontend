@@ -110,8 +110,9 @@ export class CalendarComponent implements OnInit, AfterViewInit {
   checkIfWeekContainsVisits() {
     for (let i = 0; i < this.visits.length; i++) {
       for (let j = 0; j < this.weekDays.length - 1; j++) {
-        if (moment(this.visits[i]).isSame(this.weekDays[j], "day")) {
+        if (moment(this.visits[i].visitDate).isSame(this.weekDays[j], "day")) {
           this.markTakenSlot(this.visits[i]);
+        }else{
         }
       }
     }

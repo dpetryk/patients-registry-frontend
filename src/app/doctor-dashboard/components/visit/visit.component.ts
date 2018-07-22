@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {VisitService} from '../../../core/services/visit.service';
 import moment from 'moment-es6';
 import {ActivatedRoute} from "@angular/router";
-import {FormsModule} from "@angular/forms";
 import {Visit} from "../../../core/models/visit.model";
+import {MatDatepickerInputEvent} from "@angular/material";
 
 @Component({
   selector: 'app-visit',
@@ -59,7 +59,7 @@ export class VisitComponent implements OnInit {
     this.refreshFilter();
   }
 
-  refreshFilter(){
+  refreshFilter() {
     this.filteredVisitsByDay = this.visitsByDay;
     this.filteredVisitsByDay = this.filterString ? this.performFilter(this.filterString) : this.visitsByDay;
   }
@@ -88,6 +88,12 @@ export class VisitComponent implements OnInit {
   performFilter(filterBy: string): Visit[] {
     filterBy = filterBy.toLocaleLowerCase();
     return this.visitsByDay.filter((visit: Visit) => visit.patient.lastName.toLocaleLowerCase().indexOf(filterBy) !== -1);
+  }
+
+  dateChangeEvent(event: MatDatepickerInputEvent<Date>) {
+    this.currentDate = moment(event.value) ;
+    this.viewVisitsByDay();
+    this.refreshFilter();
   }
 
 }

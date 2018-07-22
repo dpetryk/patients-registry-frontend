@@ -1,17 +1,30 @@
 <div class="main-content">
-  <h2>Book your visit:</h2>
-  <br>
-  <div class="container-flex">
-    <button mat-raised-button (click)="prevWeek($event)">
-      <mat-icon>chevron_left</mat-icon>
-      Previous week
-    </button>
-    <button mat-raised-button (click)="nextWeek($event)">
-      Next week
-      <mat-icon>chevron_right</mat-icon>
-    </button>
+  <h1>Book your visit</h1>
+  <div>
+    <div>
+      <button class="prev-next-btn" mat-raised-button color="primary" (click)="prevWeek($event)">
+        <mat-icon>chevron_left</mat-icon>
+        Previous week
+      </button>
+    </div>
+    <div>
+      <button class="prev-next-btn" mat-raised-button color="primary" (click)="nextWeek($event)">
+        Next week
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
   </div>
-  <br>
+  <!--<div class="container-flex">-->
+  <!--<button mat-raised-button (click)="prevWeek($event)">-->
+  <!--<mat-icon>chevron_left</mat-icon>-->
+  <!--Previous week-->
+  <!--</button>-->
+  <!--<button mat-raised-button (click)="nextWeek($event)">-->
+  <!--Next week-->
+  <!--<mat-icon>chevron_right</mat-icon>-->
+  <!--</button>-->
+  <!--</div>-->
+  <br><br>
   <table class="table shadow">
     <thead>
     <th></th>
@@ -21,7 +34,7 @@
     </thead>
     <tbody>
     <tr *ngFor="let time of timeTable">
-      <td>{{time}}</td>
+      <td class="time">{{time}}</td>
       <td *ngFor="let workDay of workDays" class="slot"
           (click)="handleRegistryConfirmation($event, workDay, time)"></td>
       <td class="slot-holiday"></td>

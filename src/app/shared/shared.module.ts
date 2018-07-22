@@ -3,10 +3,10 @@ import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {FormsModule} from "@angular/forms";
 import {
-  MatButtonModule,
+  MatButtonModule, MatCardModule, MatDatepickerModule,
   MatDialogModule,
-  MatIconModule,
-  MatMenuModule,
+  MatIconModule, MatInputModule,
+  MatMenuModule, MatNativeDateModule,
   MatSnackBarModule,
   MatToolbarModule
 } from "@angular/material";
@@ -29,6 +29,10 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     MatToolbarModule,
     MatMenuModule,
     MatSnackBarModule,
+    MatCardModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     FlexLayoutModule
   ]
 })
