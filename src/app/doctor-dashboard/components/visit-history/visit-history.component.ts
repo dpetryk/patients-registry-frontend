@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+
 import {VisitService} from "../../../core/services/visit.service";
 
 @Component({
@@ -11,12 +12,12 @@ export class VisitHistoryComponent implements OnInit {
   @Input() patientId;
   visitsOfPatient;
 
-
   constructor(private visitService: VisitService) {
   }
 
   ngOnInit() {
     this.getVisitsOfPatient(this.patientId)
+
   }
 
   getVisitsOfPatient(id: number) {

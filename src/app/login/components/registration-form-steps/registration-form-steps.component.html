@@ -1,0 +1,97 @@
+<div class="main-content">
+  <h1>Registration</h1>
+  <mat-card class="form-card">
+    <mat-horizontal-stepper #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Personal data</ng-template>
+          <mat-form-field class="mid-width">
+            <input type="text" matInput placeholder="First name" formControlName="firstName" autocomplete="off"
+                   required>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="mid-width">
+            <input type="text" matInput placeholder="Surname" formControlName="surname" autocomplete="off" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="mid-width">
+            <input matInput [matDatepicker]="picker" placeholder="Date of birth" formControlName="dateOfBirth"
+                   autocomplete="off" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="mid-width">
+            <input type="text" matInput placeholder="PESEL" formControlName="pesel" autocomplete="off" required>
+          </mat-form-field>
+          <br><br>
+          <div class="button-container-flex mid-width">
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+        <p class="footnote">* required fields</p>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Address</ng-template>
+          <mat-form-field class="mid-width">
+            <input matInput placeholder="City" formControlName="city" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="mid-width">
+            <input matInput placeholder="Street" formControlName="street" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="mid-width">
+            <input matInput placeholder="Postal code" formControlName="postal" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="mid-width">
+            <input matInput placeholder="House number" formControlName="house" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="mid-width">
+            <input matInput placeholder="Apartment number" formControlName="apartment">
+          </mat-form-field>
+          <br>
+          <div class="button-container-flex mid-width">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+        <p class="footnote">* required fields</p>
+      </mat-step>
+      <mat-step>
+        <form [formGroup]="thirdFormGroup">
+          <ng-template matStepLabel>Contacts and consents</ng-template>
+          <div>
+            <mat-form-field class="mid-width">
+              <input matInput placeholder="Email" formControlName="email" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="mid-width">
+              <input matInput placeholder="Phone number" formControlName="phone" required>
+            </mat-form-field>
+            <br><br>
+            <mat-checkbox formControlName="termsAndConditions" required>I accept terms and conditions</mat-checkbox>
+            <mat-icon matTooltip="Read terms and conditions" matTooltipPosition="above" class="terms-read"
+                      color="primary"
+                      (click)="openFormDialog($event,'terms')">more
+            </mat-icon>
+            <br>
+            <mat-checkbox formControlName="gdpr" required>GDPR consent</mat-checkbox>
+            <mat-icon matTooltip="Read GDPR conditions" matTooltipPosition="above" class="terms-read" color="primary"
+                      (click)="openFormDialog($event,'gdpr')">more
+            </mat-icon>
+            <br><br><br>
+            <div class="button-container-flex mid-width">
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button (click)="stepper.reset()">Reset</button>
+              <button mat-raised-button color="primary" (click)="save()">Submit form</button>
+            </div>
+          </div>
+        </form>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </mat-card>
+</div>

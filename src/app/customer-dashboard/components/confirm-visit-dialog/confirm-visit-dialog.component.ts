@@ -4,6 +4,7 @@ import {VisitService} from "../../../core/services/visit.service";
 import {DialogService} from "../../services/dialog.service";
 import {Visit} from "../../../core/models/visit.model";
 import {MatDialogRef} from "@angular/material";
+import {Patient} from "../../../core/models/patient.model";
 
 @Component({
   selector: 'app-confirm-visit-dialog',
@@ -26,7 +27,9 @@ export class ConfirmVisitDialogComponent implements OnInit {
   }
 
   confirmVisit(visitDate: moment.Moment): void {
-    const visit = new Visit(undefined, visitDate.toDate(), '', '', null);
+    const visit = new Visit(undefined, visitDate.toDate(), '', '', '', new Patient(
+null, 'Added', 'Newly', '22222222222', null
+    ));
     this.visitService.createVisit(visit).subscribe(
       data => {
         console.log(data);

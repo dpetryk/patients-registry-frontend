@@ -13,20 +13,21 @@ Visits history:
     </mat-card-header>
     <mat-card-content>
       <div class="container-flex">
-        <div class="inline">
-          <span class="note-content"> Description:<br></span>
-          {{visit.notes}}
+        <div class="custom-flex">
+          <div class="upper-box">
+            <span class="note-content"> Description:<br></span>
+            {{visit.notes}}<br><br>
+          </div>
+          <div class="lower-box"><br><span class="note-content"> Recommendations:<br></span>
+            {{visit.recommendations}}
+          </div>
         </div>
         <div class="inline right-box">
-         <span class="note-content"> Prescriptions:<br></span>
+          <span class="note-content"> Prescriptions:<br></span>
           {{visit.prescriptions}}
         </div>
       </div>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions>
   </mat-card>
 </div>
 

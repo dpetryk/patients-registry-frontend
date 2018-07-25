@@ -58,6 +58,7 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     this.generateWeek();
     this.route.data.subscribe(data => {
       this.visits = data.visits;
+      console.log(data);
     })
   }
 

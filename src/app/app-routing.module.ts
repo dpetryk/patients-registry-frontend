@@ -6,6 +6,8 @@ import {VisitDetailsEditComponent} from './doctor-dashboard/components/visit-det
 import {CalendarComponent} from './customer-dashboard/components/calendar/calendar.component';
 import {VisitsResolver} from "./core/services/visits.resolver";
 import {PatientDetailsComponent} from "./doctor-dashboard/components/patient-details/patient-details.component";
+import {RegistrationFormComponent} from "./login/components/registration-form/registration-form.component";
+import {RegistrationFormStepsComponent} from "./login/components/registration-form-steps/registration-form-steps.component";
 
 
 const routes: Routes = [
@@ -15,10 +17,19 @@ const routes: Routes = [
   {path: 'visits/:id', component: VisitDetailsComponent},
 //  {path: 'patients', component: PatientsComponent},
   {path: 'patients/:id', component: PatientDetailsComponent},
+  {path: 'users/registration', component: RegistrationFormComponent},
+  {path: 'reg', component: RegistrationFormStepsComponent},
   {path: 'calendar', component: CalendarComponent, resolve: {visits: VisitsResolver}}
 ];
 
 
-@NgModule({imports: [RouterModule.forRoot(routes)], exports: [RouterModule]})
+@NgModule({
+  imports: [
+    RouterModule.forRoot(routes)
+  ],
+  exports: [
+    RouterModule
+  ]
+})
 export class AppRoutingModule {
 }

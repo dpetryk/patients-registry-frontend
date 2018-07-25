@@ -1,17 +1,18 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
-import {FormsModule} from "@angular/forms";
-import {
-  MatButtonModule, MatCardModule, MatDatepickerModule,
-  MatDialogModule,
-  MatIconModule, MatInputModule,
-  MatMenuModule, MatNativeDateModule,
-  MatSnackBarModule,
-  MatToolbarModule
-} from "@angular/material";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {
+  MatButtonModule, MatCardModule, MatCheckboxModule, MatDatepickerModule,
+  MatDialogModule, MatDividerModule,
+  MatIconModule, MatInputModule,
+  MatMenuModule, MatNativeDateModule,
+  MatSnackBarModule, MatStepperModule,
+  MatToolbarModule, MatTooltipModule
+} from "@angular/material";
+
 
 @NgModule({
   imports: [
@@ -33,6 +34,11 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatDividerModule,
+    MatTooltipModule,
+    MatCheckboxModule,
+    MatStepperModule,
+    ReactiveFormsModule,
     FlexLayoutModule
   ]
 })

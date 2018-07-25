@@ -24,4 +24,8 @@ export class PatientService {
     return this.http.get<Patient>(this.apiUrl + id);
   }
 
+  createPatient(patient: Patient){
+    return this.http.post<Patient>(this.apiUrl, JSON.stringify(patient), httpOptions);
+  }
+
 }

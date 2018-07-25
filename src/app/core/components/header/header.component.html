@@ -1,5 +1,17 @@
-<mat-toolbar color="primary">
-  <span>Patients registry</span>
-  <button mat-button routerLink="visits">Registered visits</button>
+<mat-toolbar color="primary" class="toolbar mat-elevation-z10" role="heading">
+  <button mat-button routerLink="/"><mat-icon class="logo-icon">local_hospital </mat-icon> <span class="logo">Patients registry</span></button>
+  <button mat-button class="nav-element" routerLink="visits">Registered visits</button>
   <button mat-button routerLink="calendar">Book a visit</button>
+  <div class="flex-spacer"></div>
+  <!--<button mat-button class="nav-element" routerLink="visits">Sign in</button>-->
+  <!--|-->
+  <!--<button mat-button class="nav-element" routerLink="visits">Log in</button>-->
+  <p class="greeting">Welcome, Damian!</p>
+  <a class="loggedin-icon" matTooltip="View profile options" [matMenuTriggerFor]="profileSubmenu"><mat-icon >person</mat-icon></a>
+
+
 </mat-toolbar>
+<mat-menu #profileSubmenu="matMenu">
+  <button mat-menu-item>View data</button>
+  <button mat-menu-item>Log out</button>
+</mat-menu>

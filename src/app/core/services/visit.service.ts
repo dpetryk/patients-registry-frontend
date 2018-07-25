@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+
 import {Observable} from 'rxjs';
 import {Visit} from '../models/visit.model';
 import moment from 'moment-es6';
@@ -27,13 +28,8 @@ export class VisitService {
     return this.httpClient.get<Visit>(this.visitsRestApiUrl + '/visits' + '/' + id);
   }
 
-  createVisit(visit) { // poprawić! po stronie BD zapisuje vizyte w innej strefie czasowej (0:00 zamiast +2h)
-    let body;
-    visit.visitDate.toJSON = function () {
-      return moment(this).format();
-    }
-    body = JSON.stringify(visit);
-    return this.httpClient.post<Visit>(this.visitsRestApiUrl + '/visits', body, httpOptions);
+  createVisit(visit) { // workaround with timezone. backend adds 2 hours before saving to DB
+    return this.httpClient.post<Visit>(this.visitsRestApiUrl + '/visits', JSON.stringify(visit), httpOptions);
   }
 
   getVisitsOfPatient(id: number): Observable<Visit[]> {

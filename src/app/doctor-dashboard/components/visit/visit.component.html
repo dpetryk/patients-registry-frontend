@@ -43,10 +43,9 @@
       <td>{{visit.patient.lastName}}</td>
       <td>{{visit.patient.firstName}}</td>
       <td><a routerLink="../patients/{{visit.patient.id}}">
-        <mat-icon color="primary">chrome_reader_mode</mat-icon>
+        <mat-icon color="primary" matTooltip="View patient's card" matTooltipPosition="before">chrome_reader_mode</mat-icon>
       </a></td>
     </tr>
     </tbody>
   </table>
-  <a routerLink="create">Add new visit</a>
 </div>

@@ -6,13 +6,13 @@
       at <strong>{{selectedTimestamp | date: 'HH:mm'}}</strong></p>
     <p class="modal-text">Do you confirm your visit?</p>
   </mat-dialog-content>
-  <mat-dialog-actions>
-
-    <button mat-button color="primary" (click)="confirmVisit(selectedTimestamp)">
+  <mat-dialog-actions class="container-flex">
+       <button mat-button color="primary" (click)="confirmVisit(selectedTimestamp)">
       <mat-icon>check_circle</mat-icon>
       Confirm
     </button>
-    <button mat-button color="primary" (click)="dismiss()">
+    <div class="divider"></div>
+    <button mat-button color="primary"(click)="dismiss()">
       <mat-icon>cancel</mat-icon>
       Cancel
     </button>
@@ -24,7 +24,7 @@
     <p class="modal-text">Unfortunately this slot is taken.
     <p class="modal-text">Please select free slot.</p>
   </mat-dialog-content>
-  <mat-dialog-actions>
+  <mat-dialog-actions class="container-flex">
     <button mat-button color="primary" (click)="dismiss()">
       OK
     </button>

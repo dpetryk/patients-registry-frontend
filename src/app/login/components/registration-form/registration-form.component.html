@@ -1,0 +1,47 @@
+<div class="main-content">
+
+  <h1>Registration</h1>
+  <br>
+  <mat-card class="form-card">
+    <!--<div class="container-flex">-->
+    <form>
+      <mat-form-field class="mid-width">
+        <input type="text" matInput placeholder="*Name" autocomplete="off">
+      </mat-form-field>
+      <mat-form-field class="mid-width">
+        <input type="text" matInput placeholder="*Surname" autocomplete="off">
+      </mat-form-field>
+      <mat-form-field class="mid-width">
+        <input type="email" matInput placeholder="*E-mail" autocomplete="off">
+      </mat-form-field>
+      <mat-form-field class="mid-width">
+        <input type="number" matInput placeholder="*Phone" autocomplete="off">
+      </mat-form-field>
+      <mat-form-field class="mid-width">
+        <input matInput [matDatepicker]="picker" placeholder="*Date of birth" autocomplete="off">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="mid-width">
+        <input type="number" matInput placeholder="*PESEL" autocomplete="off">
+      </mat-form-field>
+      <br><br>
+      <mat-checkbox>I accept terms and conditions</mat-checkbox>
+      <mat-icon matTooltip="Read terms and conditions" matTooltipPosition="above" class="terms-read" color="primary"
+                (click)="openFormDialog($event,'terms')">more
+      </mat-icon>
+      <br>
+      <mat-checkbox>GDPR consent</mat-checkbox>
+      <mat-icon matTooltip="Read GDPR conditions" matTooltipPosition="above" class="terms-read" color="primary"
+                (click)="openFormDialog($event,'gdpr')">more
+      </mat-icon>
+    </form>
+    <div class="align-right">
+      <button mat-raised-button class="submit-btn" color="primary">Submit</button>
+    </div>
+    <br>
+    <p class="footnote">* required fields</p>
+    <!--</div>-->
+
+  </mat-card>
+</div>

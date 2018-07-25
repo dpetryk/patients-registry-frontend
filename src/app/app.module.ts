@@ -3,11 +3,11 @@ import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
-// import {ModalComponent} from './customer-dashboard/components/modal/modal.component';
 import {CustomerDashboardModule} from './customer-dashboard/customer-dashboard.module';
 import {DoctorDashboardModule} from './doctor-dashboard/doctor-dashboard.module';
 import {CoreModule} from './core/core.module';
 import {SharedModule} from './shared/shared.module';
+import {LoginModule} from "./login/login.module";
 
 @NgModule({
   declarations: [
@@ -20,10 +20,12 @@ import {SharedModule} from './shared/shared.module';
     CustomerDashboardModule,
     DoctorDashboardModule,
     CoreModule,
+    LoginModule,
     SharedModule
   ],
-  bootstrap: [AppComponent],
-  // entryComponents: [ModalComponent]
+  bootstrap: [
+    AppComponent
+  ],
 })
 export class AppModule {
 }

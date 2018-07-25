@@ -1,8 +1,8 @@
 <div class="main-content" *ngIf="patient">
   <div class="row">
     <div class="page-header col">
-      <h1>{{patient.firstName}} {{patient.lastName}}
-        <small> PESEL:&nbsp;{{patient.pesel}}</small>
+      <h1>{{patient.firstName}} {{patient.lastName}}<br>
+        <small>{{patient.pesel}}</small>
       </h1>
 
     </div>
@@ -10,14 +10,11 @@
 
     <div class="col" align="right">
 
-      Patient address: <br>ul. {{patient.address.street}}
+      Address: <br>ul. {{patient.address.street}}
       {{patient.address.house}}/{{patient.address.apartment}}<br> {{patient.address.postal}}
       {{patient.address.city}}
     </div>
   </div>
-  <hr>
+  <mat-divider></mat-divider>
   <app-visit-history [patientId]="patient.id"></app-visit-history>
-  <div align="right">
-    <a routerLink="../">add note</a> | <a routerLink="../">back</a>
-  </div>
 </div>

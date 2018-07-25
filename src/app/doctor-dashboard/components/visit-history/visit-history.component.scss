@@ -1,20 +1,49 @@
 .card {
   max-width: 100%;
-  margin: 20px;
+  margin-bottom: 30px;
 }
 
 .inline {
   float: left;
-  margin-left: 10px;
-  padding-left: 0px;
+  //margin-left: 0px;
+  padding-left: 0;
 }
 
 .right-box {
   border-left-style: solid;
   border-left-color: #d3d9df;
   border-left-width: 1px;
-  padding: 5px;
+  padding: 10px;
   width: 50%;
+}
+
+.container-flex{
+  display:flex;
+}
+
+.custom-flex {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+
+.upper-box{
+  order: 0;
+  flex: 1 1 auto;
+  align-self: stretch;
+
+}
+
+.lower-box{
+  order: 0;
+  flex: 1 1 auto;
+  align-self: stretch;
+  border-top-style: solid;
+  border-top-color: #d3d9df;
+  border-top-width: 1px;
 }
 
 .note-content{
