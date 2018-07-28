@@ -2,27 +2,48 @@
   <h1>Registration</h1>
   <mat-card class="form-card">
     <mat-horizontal-stepper #stepper>
-      <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup">
+      <mat-step [stepControl]="personalFg">
+        <form [formGroup]="personalFg">
           <ng-template matStepLabel>Personal data</ng-template>
-          <mat-form-field class="mid-width">
-            <input type="text" matInput placeholder="First name" formControlName="firstName" autocomplete="off"
-                   required>
-          </mat-form-field>
-          <br>
-          <mat-form-field class="mid-width">
-            <input type="text" matInput placeholder="Surname" formControlName="surname" autocomplete="off" required>
-          </mat-form-field>
-          <br>
+          <div class="name-grid mid-width">
+            <mat-form-field>
+              <input type="text" matInput placeholder="First name" formControlName="firstName" autocomplete="off"
+                     required>
+              <mat-error *ngIf="firstName.hasError('minlength') && !firstName.hasError('required')">
+                Name needs to have at least two characters
+              </mat-error>
+              <mat-error *ngIf="firstName.hasError('required')">
+                First name is required
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input type="text" matInput placeholder="Surname" formControlName="surname" autocomplete="off" required>
+              <mat-error *ngIf="surname.hasError('minlength') && !surname.hasError('required')">
+                Surname needs to have at least two characters
+              </mat-error>
+              <mat-error *ngIf="surname.hasError('required')">
+                Surname name is required
+              </mat-error>
+            </mat-form-field>
+          </div>
           <mat-form-field class="mid-width">
             <input matInput [matDatepicker]="picker" placeholder="Date of birth" formControlName="dateOfBirth"
                    autocomplete="off" required>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="dateOfBirth.hasError('required')">
+              Date of birth is required
+            </mat-error>
           </mat-form-field>
           <br>
           <mat-form-field class="mid-width">
             <input type="text" matInput placeholder="PESEL" formControlName="pesel" autocomplete="off" required>
+            <mat-error *ngIf="pesel.hasError('pattern') && !pesel.hasError('required')">
+              Please enter a valid PESEL number
+            </mat-error>
+            <mat-error *ngIf="pesel.hasError('required')">
+              PESEL is required
+            </mat-error>
           </mat-form-field>
           <br><br>
           <div class="button-container-flex mid-width">
@@ -31,29 +52,75 @@
         </form>
         <p class="footnote">* required fields</p>
       </mat-step>
-      <mat-step [stepControl]="secondFormGroup">
-        <form [formGroup]="secondFormGroup">
-          <ng-template matStepLabel>Address</ng-template>
+      <mat-step [stepControl]="contactsFg">
+        <form [formGroup]="contactsFg">
+          <ng-template matStepLabel>Contacts</ng-template>
+          <div class="street-grid mid-width">
+            <!--<div>-->
+            <mat-form-field>
+              <input matInput placeholder="Street" formControlName="street" required>
+              <mat-error *ngIf="street.hasError('minlength') && !street.hasError('required')">
+                Street needs to have at least two characters
+              </mat-error>
+              <mat-error *ngIf="street.hasError('required')">
+                Street is required
+              </mat-error>
+            </mat-form-field>
+            <!--</div>-->
+            <!--<div>-->
+            <mat-form-field>
+              <input matInput placeholder="House no." formControlName="house" required>
+              <mat-error *ngIf="house.hasError('required')">
+                Number is required
+              </mat-error>
+            </mat-form-field>
+            <!--</div>-->
+            <!--<div>-->
+            <mat-form-field>
+              <input matInput placeholder="Apartment no." formControlName="apartment" autocomplete="off">
+            </mat-form-field>
+            <!--</div>-->
+          </div>
+          <div class="city-grid mid-width">
+
+            <mat-form-field>
+              <input matInput placeholder="Postal code" formControlName="postal" required>
+              <mat-error *ngIf="postal.hasError('minlength') && !postal.hasError('required')">
+                Postal code needs to have at least five numbers
+              </mat-error>
+              <mat-error *ngIf="postal.hasError('required')">
+                Postal code is required
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="City" formControlName="city" required>
+              <mat-error *ngIf="city.hasError('minlength') && !city.hasError('required')">
+                City needs to have at least two characters
+              </mat-error>
+              <mat-error *ngIf="city.hasError('required')">
+                City is required
+              </mat-error>
+            </mat-form-field>
+          </div>
           <mat-form-field class="mid-width">
-            <input matInput placeholder="City" formControlName="city" required>
+            <input matInput type="email" placeholder="Email" formControlName="email" required>
+            <mat-error *ngIf="email.hasError('pattern') && !email.hasError('required')">
+              Please enter valid email address
+            </mat-error>
+            <mat-error *ngIf="email.hasError('required')">
+              Email address is required
+            </mat-error>
           </mat-form-field>
           <br>
           <mat-form-field class="mid-width">
-            <input matInput placeholder="Street" formControlName="street" required>
+            <input matInput placeholder="Phone number" formControlName="phone" required>
+            <mat-error *ngIf="phone.hasError('minlength') && !phone.hasError('required')">
+              Phone number needs to have at least seven numbers
+            </mat-error>
+            <mat-error *ngIf="phone.hasError('required')">
+              Phone number is required
+            </mat-error>
           </mat-form-field>
-          <br>
-          <mat-form-field class="mid-width">
-            <input matInput placeholder="Postal code" formControlName="postal" required>
-          </mat-form-field>
-          <br>
-          <mat-form-field class="mid-width">
-            <input matInput placeholder="House number" formControlName="house" required>
-          </mat-form-field>
-          <br>
-          <mat-form-field class="mid-width">
-            <input matInput placeholder="Apartment number" formControlName="apartment">
-          </mat-form-field>
-          <br>
           <div class="button-container-flex mid-width">
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button matStepperNext>Next</button>
@@ -62,16 +129,44 @@
         <p class="footnote">* required fields</p>
       </mat-step>
       <mat-step>
-        <form [formGroup]="thirdFormGroup">
-          <ng-template matStepLabel>Contacts and consents</ng-template>
-          <div>
+        <form [formGroup]="loginFg">
+          <ng-template matStepLabel>Logging credentials and consents</ng-template>
+          <mat-form-field class="mid-width">
+            <input matInput placeholder="Login" formControlName="login" autocomplete="off" required>
+            <mat-error *ngIf="login.hasError('minlength') && !login.hasError('required')">
+              Login needs to have at least two characters
+            </mat-error>
+            <mat-error *ngIf="login.hasError('required')">
+              Login is required
+            </mat-error>
+          </mat-form-field>
+
+          <div formGroupName="passwords">
             <mat-form-field class="mid-width">
-              <input matInput placeholder="Email" formControlName="email" required>
+              <input type="password" matInput placeholder="Password" formControlName="password" autocomplete="off"
+                     required>
+              <mat-error *ngIf="password.hasError('pattern') && !password.hasError('required')">
+                Password needs to contain at least 8 characters, at least one letter and at least one number
+              </mat-error>
+              <mat-error *ngIf="password.hasError('required')">
+                Password is required
+              </mat-error>
             </mat-form-field>
             <br>
             <mat-form-field class="mid-width">
-              <input matInput placeholder="Phone number" formControlName="phone" required>
+              <input matInput type="password" placeholder="Password confirmation" formControlName="passwordConfirm"
+                     autocomplete="off" required>
+                <mat-error *ngIf="passwordConfirm.hasError('mismatch') && !passwordConfirm.hasError('required')">
+                  Passwords confirmation do not match password
+                </mat-error>
+                <mat-error *ngIf="passwordConfirm.hasError('required')">
+                  Password confirmation is required
+                </mat-error>
             </mat-form-field>
+          </div>
+        </form>
+        <form [formGroup]="consentsFg">
+          <div>
             <br><br>
             <mat-checkbox formControlName="termsAndConditions" required>I accept terms and conditions</mat-checkbox>
             <mat-icon matTooltip="Read terms and conditions" matTooltipPosition="above" class="terms-read"

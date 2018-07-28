@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {FormDialog} from "../form-dialog/form-dialog.component";
 import {MatDialog} from "@angular/material";
 import {PatientService} from "../../../core/services/patient.service";
@@ -13,11 +13,15 @@ import {Address} from "../../../core/models/address.model";
 })
 export class RegistrationFormStepsComponent implements OnInit {
 
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  thirdFormGroup: FormGroup;
+  personalFg: FormGroup;
+  contactsFg: FormGroup;
+  loginFg: FormGroup;
+  passwordsFg: FormGroup;
+  consentsFg: FormGroup;
+
   patient: Patient;
   address: Address;
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -25,27 +29,114 @@ export class RegistrationFormStepsComponent implements OnInit {
     private patientService: PatientService) {
   }
 
+  get firstName() {
+    return this.personalFg.get('firstName');
+  }
+
+  get surname() {
+    return this.personalFg.get('surname');
+  }
+
+  get dateOfBirth() {
+    return this.personalFg.get('dateOfBirth');
+  }
+
+  get pesel() {
+    return this.personalFg.get('pesel');
+  }
+
+  get city() {
+    return this.contactsFg.get('city');
+  }
+
+  get street() {
+    return this.contactsFg.get('street');
+  }
+
+  get postal() {
+    return this.contactsFg.get('postal');
+  }
+
+  get house() {
+    return this.contactsFg.get('house');
+  }
+
+  get apartment() {
+    return this.contactsFg.get('apartment');
+  }
+
+  get email() {
+    return this.contactsFg.get('email');
+  }
+
+  get phone() {
+    return this.contactsFg.get('phone');
+  }
+
+  get login() {
+    return this.loginFg.get('login');
+  }
+
+  get password() {
+    return this.loginFg.get('passwords.password');
+  }
+
+  get passwordConfirm() {
+    return this.loginFg.get('passwords.passwordConfirm');
+  }
+
+
   ngOnInit() {
-    this.firstFormGroup = this.formBuilder.group({
+    this.personalFg = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       surname: ['', [Validators.required, Validators.minLength(2)]],
       dateOfBirth: ['', Validators.required],
-      pesel: ['', [Validators.required, Validators.pattern('^\d{11}$')]]
+      pesel: ['', [Validators.required, Validators.pattern('^[0-9]{11}$')]]
     });
-    this.secondFormGroup = this.formBuilder.group({
+
+    this.contactsFg = this.formBuilder.group({
       city: ['', [Validators.required, Validators.minLength(2)]],
       street: ['', [Validators.required, Validators.minLength(2)]],
       postal: ['', [Validators.required, Validators.minLength(5)]],
       house: ['', Validators.required],
-      apartment: ['']
+      apartment: [''],
+      email: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")]],
+      phone: ['', [Validators.required, Validators.minLength(7)]]
     });
-    this.thirdFormGroup = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.minLength(2)]],
-      phone: ['', [Validators.required, Validators.minLength(7)]],
-      city: ['', [Validators.required, Validators.minLength(2)]],
+
+    this.loginFg = this.formBuilder.group({
+      login: ['', [Validators.required, Validators.minLength(2)]],
+      passwords: this.formBuilder.group({
+        password: ['', [Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')]],
+        passwordConfirm: ['', [Validators.required,]],
+      }, {validator: this.passwordConfirmation})
+    });
+
+    this.consentsFg = this.formBuilder.group({
       termsAndConditions: ['', Validators.required],
-      gdpr: ['', Validators.required]
-    });
+      gdpr: ['', Validators.required],
+    })
+
+  }
+
+  // this.passwordsFg = this.formBuilder.group({
+  //   password: ['', [Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')]],
+  //   passwordConfirm: ['', [Validators.required]],
+  //    }, {validator: this.passwordConfirmation});
+  //
+  // });
+
+  passwordConfirmation(c: AbstractControl) {
+    if (c.get('password').pristine || c.get('passwordConfirm').pristine) {
+      return null;
+    }
+    if (c.get('password').value === c.get('passwordConfirm').value) {
+      console.log("MATCH!");
+      c.get('passwordConfirm').setErrors(null)
+      return null;
+    }
+    return c.get('passwordConfirm').setErrors({mismatch: true});
+
   }
 
   openFormDialog(event: Event, type: string) {
@@ -58,10 +149,10 @@ export class RegistrationFormStepsComponent implements OnInit {
   }
 
   save() {
-    console.log(this.firstFormGroup.value);
-    console.log(this.secondFormGroup.value);
-    console.log(this.thirdFormGroup.value);
-    // new Patient(undefined,this.firstFormGroup.)
+    console.log(this.personalFg.value);
+    console.log(this.contactsFg.value);
+    console.log(this.consentsFg.value);
+    // new Patient(undefined,this.personalFg.)
   }
 
 }

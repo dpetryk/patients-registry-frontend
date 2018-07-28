@@ -14,6 +14,29 @@
   width: 50%;
 }
 
+//.grid-long {
+//  width: 80%;
+//}
+//
+//.grid-short {
+//  width: 10%;
+//}
+
+.name-grid{
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.street-grid{
+  display: grid;
+  grid-template-columns: 50% 25% 25%;
+}
+
+.city-grid{
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
 .button-container-flex {
   display: flex;
   justify-content: flex-end;
