@@ -9,6 +9,7 @@ import {VisitDetailsEditComponent} from './components/visit-details-edit/visit-d
 import {SharedModule} from '../shared/shared.module';
 import {PatientDetailsComponent} from './components/patient-details/patient-details.component';
 import {VisitHistoryComponent} from './components/visit-history/visit-history.component';
+import { PatientsListComponent } from './components/patients-list/patients-list.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import {VisitHistoryComponent} from './components/visit-history/visit-history.co
     VisitDetailsComponent,
     VisitDetailsEditComponent,
     PatientDetailsComponent,
-    VisitHistoryComponent]
+    VisitHistoryComponent,
+    PatientsListComponent]
 })
 export class DoctorDashboardModule { }

@@ -28,7 +28,7 @@ export class ConfirmVisitDialogComponent implements OnInit {
 
   confirmVisit(visitDate: moment.Moment): void {
     const visit = new Visit(undefined, visitDate.toDate(), '', '', '', new Patient(
-null, 'Added', 'Newly', '22222222222', null
+null, 'Added', 'Newly', '22222222222', 'test@test.pl', '751233211', true, null
     ));
     this.visitService.createVisit(visit).subscribe(
       data => {

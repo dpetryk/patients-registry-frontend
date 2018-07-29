@@ -8,8 +8,8 @@ import {
   MatButtonModule, MatCardModule, MatCheckboxModule, MatDatepickerModule,
   MatDialogModule, MatDividerModule,
   MatIconModule, MatInputModule,
-  MatMenuModule, MatNativeDateModule,
-  MatSnackBarModule, MatStepperModule,
+  MatMenuModule, MatNativeDateModule, MatPaginatorModule,
+  MatSnackBarModule, MatSortModule, MatStepperModule, MatTableModule,
   MatToolbarModule, MatTooltipModule
 } from "@angular/material";
 
@@ -39,6 +39,9 @@ import {
     MatCheckboxModule,
     MatStepperModule,
     ReactiveFormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
     FlexLayoutModule
   ]
 })

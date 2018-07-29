@@ -22,7 +22,6 @@ export class RegistrationFormStepsComponent implements OnInit {
   patient: Patient;
   address: Address;
 
-
   constructor(
     private formBuilder: FormBuilder,
     private dialog: MatDialog,
@@ -85,7 +84,6 @@ export class RegistrationFormStepsComponent implements OnInit {
     return this.loginFg.get('passwords.passwordConfirm');
   }
 
-
   ngOnInit() {
     this.personalFg = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.minLength(2)]],
@@ -118,13 +116,6 @@ export class RegistrationFormStepsComponent implements OnInit {
     })
 
   }
-
-  // this.passwordsFg = this.formBuilder.group({
-  //   password: ['', [Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')]],
-  //   passwordConfirm: ['', [Validators.required]],
-  //    }, {validator: this.passwordConfirmation});
-  //
-  // });
 
   passwordConfirmation(c: AbstractControl) {
     if (c.get('password').pristine || c.get('passwordConfirm').pristine) {

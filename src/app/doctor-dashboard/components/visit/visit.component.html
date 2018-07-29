@@ -33,7 +33,7 @@
       <th>Date</th>
       <th>Patient surname</th>
       <th>Patient name</th>
-      <th>Details</th>
+      <th>Options</th>
     </tr>
     </thead>
     <tbody>
@@ -43,7 +43,7 @@
       <td>{{visit.patient.lastName}}</td>
       <td>{{visit.patient.firstName}}</td>
       <td><a routerLink="../patients/{{visit.patient.id}}">
-        <mat-icon color="primary" matTooltip="View patient's card" matTooltipPosition="before">chrome_reader_mode</mat-icon>
+        <mat-icon matTooltip="View patient's card" matTooltipPosition="before">assignment_ind</mat-icon>
       </a></td>
     </tr>
     </tbody>
