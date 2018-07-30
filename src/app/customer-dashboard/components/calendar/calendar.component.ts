@@ -56,10 +56,10 @@ export class CalendarComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.generateWeek();
-    this.route.data.subscribe(data => {
-      this.visits = data.visits;
-      console.log(data);
-    })
+    this.route.data.subscribe(
+      data => this.visits = data.visits,
+      error => console.log(error)
+    )
   }
 
   ngAfterViewInit() {
