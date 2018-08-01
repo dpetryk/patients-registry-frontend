@@ -7,7 +7,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {
   MatButtonModule, MatCardModule, MatCheckboxModule, MatDatepickerModule,
   MatDialogModule, MatDividerModule,
-  MatIconModule, MatInputModule,
+  MatIconModule, MatInputModule, MatListModule,
   MatMenuModule, MatNativeDateModule, MatPaginatorModule,
   MatSnackBarModule, MatSortModule, MatStepperModule, MatTableModule,
   MatToolbarModule, MatTooltipModule
@@ -42,6 +42,7 @@ import {
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatListModule,
     FlexLayoutModule
   ]
 })

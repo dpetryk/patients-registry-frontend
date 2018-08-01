@@ -8,9 +8,9 @@ import {PatientService} from "../../../core/services/patient.service";
   templateUrl: './patients-list.component.html',
   styleUrls: ['./patients-list.component.scss']
 })
-export class PatientsListComponent implements OnInit, AfterViewInit {
+export class PatientsListComponent implements OnInit {
 
-  displayedColumns = ['id', 'lastName', 'firstName', 'pesel', 'options'];
+  displayedColumns = ['id', 'vip', 'lastName', 'firstName', 'pesel', 'options'];
   dataSource: MatTableDataSource<Patient>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -19,7 +19,6 @@ export class PatientsListComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-
     this.patientService.getPatients().subscribe(
       data => {this.dataSource = new MatTableDataSource<Patient>(data);
         this.dataSource.paginator = this.paginator;
@@ -32,7 +31,4 @@ export class PatientsListComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  ngAfterViewInit(){
-
-  }
 }

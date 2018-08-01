@@ -1,0 +1,64 @@
+.contact-card {
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.avatar {
+  width: 150px;
+}
+
+.head {
+  font-size: 24px;
+}
+
+.container-flex {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container-flex-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.container-flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.vip {
+  position: relative;
+  font-size: 32px;
+  margin-left: 10px;
+  bottom: -5px;
+}
+
+.flex-avatar {
+  flex: 0;
+  margin-right: 20px;
+}
+
+.flex-name {
+  flex: 1;
+}
+
+.flex-address {
+  min-width: 350px;
+  flex: 0;
+}
+
+.contact-icon {
+  margin-right: 10px;
+}
+
+.action-icon {
+  margin-right: 10px;
+}
+
+.hyper-black {
+  color: rgba(0, 0, 0, .75);
+  cursor: pointer;
+}

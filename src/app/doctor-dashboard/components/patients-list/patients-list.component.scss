@@ -1,9 +1,18 @@
 table {
   width: 100%;
 }
-//
-//.mat-form-field {
-//  font-size: 14px;
-//  width: 100%;
-//}
 
+.vip {
+  position: relative;
+  font-size: 18px;
+  bottom: -4px;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.option-icons{
+  position: relative;
+  bottom: -4px;
+}

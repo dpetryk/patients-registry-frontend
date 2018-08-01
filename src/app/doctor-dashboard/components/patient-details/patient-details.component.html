@@ -1,9 +1,9 @@
 <div class="main-content" *ngIf="patient">
   <div class="row">
     <div class="page-header col">
-      <h1>{{patient.firstName}} {{patient.lastName}}<br>
-        <small>{{patient.pesel}}</small>
-      </h1>
+      <h1>{{patient.lastName}}, {{patient.firstName}} <mat-icon *ngIf="patient.vip" class="vip">star</mat-icon></h1>
+        <h2>{{patient.pesel}}</h2>
+
 
     </div>
 

@@ -8,6 +8,7 @@ import {SharedModule} from '../shared/shared.module';
 import {PatientDetailsComponent} from './components/patient-details/patient-details.component';
 import {VisitHistoryComponent} from './components/visit-history/visit-history.component';
 import { PatientsListComponent } from './components/patients-list/patients-list.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { PatientsListComponent } from './components/patients-list/patients-list.
     VisitComponent,
     PatientDetailsComponent,
     VisitHistoryComponent,
-    PatientsListComponent]
+    PatientsListComponent,
+    ContactComponent]
 })
 export class DoctorDashboardModule { }

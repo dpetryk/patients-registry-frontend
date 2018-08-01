@@ -7,6 +7,7 @@ import {PatientDetailsComponent} from "./doctor-dashboard/components/patient-det
 import {RegistrationFormComponent} from "./login/components/registration-form/registration-form.component";
 import {RegistrationFormStepsComponent} from "./login/components/registration-form-steps/registration-form-steps.component";
 import {PatientsListComponent} from "./doctor-dashboard/components/patients-list/patients-list.component";
+import {ContactComponent} from "./doctor-dashboard/components/contact/contact.component";
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'visits', component: VisitComponent, resolve: {visits: VisitsResolver}},
   {path: 'patients', component: PatientsListComponent},
   {path: 'patients/:id', component: PatientDetailsComponent},
+  {path: 'patients/:id/contact', component: ContactComponent},
   {path: 'users/registration', component: RegistrationFormComponent},
   {path: 'reg', component: RegistrationFormStepsComponent},
   {path: 'calendar', component: CalendarComponent, resolve: {visits: VisitsResolver}}

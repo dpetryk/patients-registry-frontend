@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {VisitService} from '../../../core/services/visit.service';
 import moment from 'moment-es6';
 import {ActivatedRoute} from "@angular/router";
 import {Visit} from "../../../core/models/visit.model";
-import {MatDatepickerInputEvent} from "@angular/material";
+import {MatDatepickerInputEvent, MatSort, MatTableDataSource} from "@angular/material";
 
 @Component({
   selector: 'app-visit',
@@ -13,19 +13,12 @@ import {MatDatepickerInputEvent} from "@angular/material";
 export class VisitComponent implements OnInit {
 
   visits;
-  visitsByDay;
+  visitsByDay: MatTableDataSource<Visit>;
   currentDate;
-  _filterString;
-  filteredVisitsByDay;
+  displayedColumns = ['time', 'date', 'vip', 'lastName', 'firstName', 'status', 'enter'];
 
-  get filterString(): string {
-    return this._filterString;
-  }
-
-  set filterString(value: string) {
-    this._filterString = value;
-    this.filteredVisitsByDay = this.filterString ? this.performFilter(this.filterString) : this.visitsByDay;
-  }
+  // @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private visitService: VisitService,
@@ -39,7 +32,6 @@ export class VisitComponent implements OnInit {
       this.visits = data.visits;
     });
     this.visitsByDay = this.viewVisitsByDay();
-    this.filteredVisitsByDay = this.visitsByDay;
   }
 
   todayVisits() {
@@ -50,29 +42,15 @@ export class VisitComponent implements OnInit {
   nextDayVisits() {
     this.currentDate.add(1, 'days');
     this.viewVisitsByDay();
-    this.refreshFilter();
   }
 
   prevDayVisits() {
     this.currentDate.subtract(1, 'days');
     this.viewVisitsByDay();
-    this.refreshFilter();
   }
 
-  refreshFilter() {
-    this.filteredVisitsByDay = this.visitsByDay;
-    this.filteredVisitsByDay = this.filterString ? this.performFilter(this.filterString) : this.visitsByDay;
-  }
-
-  getVisits() {
-    this.visitService.getVisits().subscribe(
-      data => {
-        this.visits = data;
-      },
-      err => {
-        console.error(err);
-      }
-    );
+  applyFilter(filterValue: string) {
+    this.visitsByDay.filter = filterValue.trim().toLowerCase();
   }
 
   viewVisitsByDay() {
@@ -82,18 +60,12 @@ export class VisitComponent implements OnInit {
         visitsOfDay.push(visit);
       }
     });
-    return this.visitsByDay = visitsOfDay;
-  }
-
-  performFilter(filterBy: string): Visit[] {
-    filterBy = filterBy.toLocaleLowerCase();
-    return this.visitsByDay.filter((visit: Visit) => visit.patient.lastName.toLocaleLowerCase().indexOf(filterBy) !== -1);
+    return this.visitsByDay = new MatTableDataSource<Visit>(visitsOfDay);
   }
 
   dateChangeEvent(event: MatDatepickerInputEvent<Date>) {
     this.currentDate = moment(event.value) ;
     this.viewVisitsByDay();
-    this.refreshFilter();
   }
 
 }
