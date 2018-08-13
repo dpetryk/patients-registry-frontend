@@ -1,10 +1,16 @@
+@import "~src/css/breakpoints";
+
 .toolbar {
   flex-wrap: wrap;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
 }
 
 .logo {
-  //font-family: Verdana;
-  //font-family: Roboto,"Helvetica Neue",sans-serif;
   font-size: 16px;
 }
 
@@ -30,9 +36,19 @@
 .nav-element {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
+  @media (max-width: $mobile-large) {
+    display: none;
+  }
 }
 
 .flex-spacer {
   flex-grow: 1;
-  background-color: red;
+}
+
+.hamburger {
+  display: none;
+  margin-left: 0;
+  @media (max-width: $mobile-large) {
+    display: block;
+  }
 }

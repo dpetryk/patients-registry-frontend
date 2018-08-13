@@ -1,4 +1,5 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~src/css/breakpoints";
 
 @media (min-width: 576px) {
   .main-content {
@@ -25,8 +26,8 @@
 }
 
 body {
-  font-family: Roboto,"Helvetica Neue",sans-serif;
-  color: rgba(0,0,0,.75);
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: rgba(0, 0, 0, .75);
   font-size: 16px;
   font-weight: 400;
   line-height: 28px;
@@ -39,18 +40,44 @@ a:-webkit-any-link {
   text-decoration: none;
 }
 
-.main-content{
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto
-  }
-//
-//.container-flex{
-//  display: flex;
-//}
+.main-content {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto
+}
 
-.full-width{
+.full-width {
   width: 100%;
 }
+
+.hero {
+  width: 100%;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0));
+  z-index: 0;
+}
+
+.hero-container {
+  //background-image: url("assets/hero-images/office_3000x2000_2.jpg");
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+}
+
+.over-hero {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  @media (max-width: $mobile-large) {
+    top: 20%;
+  }
+}
+
+.hero-text {
+  color: #3f51b5;
+}
+

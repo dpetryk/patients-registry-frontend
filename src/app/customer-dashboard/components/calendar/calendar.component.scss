@@ -9,20 +9,24 @@ table {
   background-color: transparent
 }
 
+.table th {
+  background-color: #ffffff;
+}
+
 .table td, .table th {
   padding: .75rem;
   vertical-align: top;
-  border-top: 1px solid #dee2e6
+  border-top: 1px solid #dee2e6;
 }
 
 .table td {
   line-height: 10px;
 }
 
-.prev-next-btn{
-  float:left;
+.prev-next-btn {
+  float: left;
   width: 150px;
-  margin-right:15px;
+  margin-right: 15px;
 }
 
 .table thead th {
@@ -61,7 +65,7 @@ table {
   box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3);
 }
 
-.taken{
+.taken {
   background-color: #f44336;
 }
 
@@ -70,17 +74,18 @@ table {
   box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3);
 }
 
-.small-date{
+.small-date {
   font-size: 12px;
   font-weight: 500;
   color: #c6c8ca;
 }
 
-.time{
+.time {
   font-size: 12px;
   font-weight: 600;
   color: rgba(0, 0, 0, 0.54);
   width: 80px;
+  background-color: #ffffff;
 }
 
 .shadow {

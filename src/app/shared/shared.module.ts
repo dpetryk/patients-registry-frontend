@@ -8,7 +8,7 @@ import {
   MatButtonModule, MatCardModule, MatCheckboxModule, MatDatepickerModule,
   MatDialogModule, MatDividerModule,
   MatIconModule, MatInputModule, MatListModule,
-  MatMenuModule, MatNativeDateModule, MatPaginatorModule,
+  MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatSidenavModule,
   MatSnackBarModule, MatSortModule, MatStepperModule, MatTableModule,
   MatToolbarModule, MatTooltipModule
 } from "@angular/material";
@@ -43,6 +43,7 @@ import {
     MatPaginatorModule,
     MatSortModule,
     MatListModule,
+    MatSidenavModule,
     FlexLayoutModule
   ]
 })
