@@ -1,13 +1,13 @@
-import {Component, OnInit, AfterViewInit} from '@angular/core';
-import {MatDialog, MatSnackBar} from '@angular/material';
-import {ActivatedRoute} from "@angular/router";
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { MatDialog, MatSnackBar } from '@angular/material';
+import { ActivatedRoute } from "@angular/router";
 
-import {VisitService} from '../../../core/services/visit.service';
-import {Visit} from '../../../core/models/visit.model';
-import {ConfirmVisitDialogComponent} from "../confirm-visit-dialog/confirm-visit-dialog.component";
-import {DialogService} from "../../services/dialog.service";
+import { VisitService } from '../../../core/services/visit.service';
+import { Visit } from '../../../core/models/visit.model';
+import { ConfirmVisitDialogComponent } from "../confirm-visit-dialog/confirm-visit-dialog.component";
+import { DialogService } from "../../services/dialog.service";
 import moment from 'moment-es6';
-import {SnackBarComponent} from "../snack-bar/snack-bar.component";
+import { SnackBarComponent } from "../snack-bar/snack-bar.component";
 
 @Component({
   selector: 'app-calendar',
@@ -24,7 +24,7 @@ export class CalendarComponent implements OnInit, AfterViewInit {
   timeTable = ['8:00 - 8:30', '8:30 - 9:00', '9:00 - 9:30', '9:30 - 10:00', '10:00 - 10:30',
     '10:30 - 11:00', '11:00 - 11:30', '11:30 - 12:00', '12:00 - 12:30', '12:30 - 13:00',
     '13:00 - 13:30', '13:30 - 14:00', '14:00 - 14:30', '14:30 - 15:00', '15:00 - 15:30', '15:30 - 16:00',
-    '16:00 - 16:30', '16:30 - 17:00', '17:00 - 17:30', '17:30 - 18:00'];
+    '16:00 - 16:30', '16:30 - 17:00', '17:00 - 17:30', '17:30 - 18:00']
 
   constructor(
     private dialogService: DialogService,
@@ -42,9 +42,9 @@ export class CalendarComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog was closed', result);
-    if(result){
-      this.openSnackBar('Visit registered');
-    }
+      if (result) {
+        this.openSnackBar('Visit registered');
+      }
     });
   }
 
@@ -59,7 +59,7 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     this.route.data.subscribe(
       data => this.visits = data.visits,
       error => console.log(error)
-    )
+    );
   }
 
   ngAfterViewInit() {
@@ -113,7 +113,7 @@ export class CalendarComponent implements OnInit, AfterViewInit {
       for (let j = 0; j < this.weekDays.length - 1; j++) {
         if (moment(this.visits[i].visitDate).isSame(this.weekDays[j], "day")) {
           this.markTakenSlot(this.visits[i]);
-        }else{
+        } else {
         }
       }
     }

@@ -1,8 +1,11 @@
-<div class="main-content" *ngIf="patient">
+<div class="hero-container">
+  <img src="../../../../assets/hero-images/form_2048x1365.jpg" class="hero">
+</div>
+<div class="main-content over-hero-low" *ngIf="patient">
   <div class="row">
     <div class="page-header col">
-      <h1>{{patient.lastName}}, {{patient.firstName}} <mat-icon *ngIf="patient.vip" class="vip">star</mat-icon></h1>
-        <h2>{{patient.pesel}}</h2>
+      <h1 class="hero-text">{{patient.lastName}}, {{patient.firstName}} <mat-icon *ngIf="patient.vip" class="vip">star</mat-icon></h1>
+        <h2 class="">{{patient.pesel}}</h2>
 
 
     </div>

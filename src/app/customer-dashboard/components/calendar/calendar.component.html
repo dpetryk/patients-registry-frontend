@@ -7,12 +7,12 @@
     <div>
       <button class="prev-next-btn" mat-raised-button color="primary" (click)="prevWeek($event)">
         <mat-icon>chevron_left</mat-icon>
-        Previous week
+        <span class="pc-show">Previous week</span>
       </button>
     </div>
     <div>
       <button class="prev-next-btn" mat-raised-button color="primary" (click)="nextWeek($event)">
-        Next week
+          <span class="pc-show">Next week</span>
         <mat-icon>chevron_right</mat-icon>
       </button>
     </div>
@@ -20,19 +20,23 @@
   <br><br>
   <table class="table shadow">
     <thead>
-    <th></th>
-    <th *ngFor="let weekDay of weekDays; let i = index">
-      {{weekDays[i] | date: 'EEEE'}}<br> <span class="small-date">{{weekDays[i] | date: "dd.MM.yyyy"}}</span>
-    </th>
+      <th class="time"></th>
+      <th *ngFor="let weekDay of weekDays; let i = index">
+        <span class="pc-show"> {{weekDays[i] | date: 'EEEE'}}<br></span>
+        <span class="small-date pc-show">{{weekDays[i] | date: "dd.MM.yyyy"}}</span>
+        <span class="mobile-show-block"> {{weekDays[i] | date: 'EEE'}}<br></span>
+        <span class="small-date mobile-show-block">{{weekDays[i] | date: "dd.MM"}}</span>
+      </th>
     </thead>
     <tbody>
-    <tr *ngFor="let time of timeTable">
-      <td class="time">{{time}}</td>
-      <td *ngFor="let workDay of workDays" class="slot"
-          (click)="handleRegistryConfirmation($event, workDay, time)"></td>
-      <td class="slot-holiday"></td>
-    </tr>
+      <tr *ngFor="let time of timeTable">
+        <td class="time">
+          <span class="pc-show">{{time}}</span>
+          <span class="mobile-show-block">{{time | NumberOfWordsPipe: 1}}</span>
+        </td>
+        <td *ngFor="let workDay of workDays" class="slot" (click)="handleRegistryConfirmation($event, workDay, time)"></td>
+        <td class="slot-holiday"></td>
+      </tr>
     </tbody>
   </table>
-
 </div>

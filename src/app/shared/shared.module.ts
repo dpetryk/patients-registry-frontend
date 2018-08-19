@@ -1,9 +1,9 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {RouterModule} from '@angular/router';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {FlexLayoutModule} from "@angular/flex-layout";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { FlexLayoutModule } from "@angular/flex-layout";
 import {
   MatButtonModule, MatCardModule, MatCheckboxModule, MatDatepickerModule,
   MatDialogModule, MatDividerModule,
@@ -12,6 +12,7 @@ import {
   MatSnackBarModule, MatSortModule, MatStepperModule, MatTableModule,
   MatToolbarModule, MatTooltipModule
 } from "@angular/material";
+import { NumberOfWordsPipe } from './no-of-words.pipe';
 
 
 @NgModule({
@@ -19,11 +20,13 @@ import {
     RouterModule,
   ],
   declarations: [
+    NumberOfWordsPipe
   ],
   exports: [
     CommonModule,
     FormsModule,
     BrowserAnimationsModule,
+    NumberOfWordsPipe,
     MatDialogModule,
     MatIconModule,
     MatButtonModule,
