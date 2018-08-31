@@ -1,64 +1,40 @@
-.contact-card {
-  width: 50%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.avatar {
+.contact__avatar {
   width: 150px;
 }
 
-.head {
-  font-size: 24px;
-}
-
-.container-flex {
+.contact__container-flex {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
 
-.container-flex-buttons {
+.contact__container-flex-buttons {
+  width: 100%;
   display: flex;
   justify-content: flex-end;
 }
 
-.container-flex-center {
-  display: flex;
-  justify-content: center;
-}
-
-.vip {
+.contact__vip-star {
   position: relative;
-  font-size: 32px;
+  font-size: 1.2rem;
   margin-left: 10px;
-  bottom: -5px;
+  // bottom: -5px;
 }
 
-.flex-avatar {
+.contact__flex-avatar {
   flex: 0;
   margin-right: 20px;
 }
 
-.flex-name {
+.contact__flex-name {
   flex: 1;
 }
 
-.flex-address {
+.contact__flex-address {
   min-width: 350px;
   flex: 0;
 }
 
-.contact-icon {
+.contact__contact-icon {
   margin-right: 10px;
-}
-
-.action-icon {
-  margin-right: 10px;
-}
-
-.hyper-black {
-  color: rgba(0, 0, 0, .75);
-  cursor: pointer;
 }

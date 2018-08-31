@@ -1,54 +1,48 @@
+@import "~src/css/images";
 
-.form-card {
-  min-height: 510px;
+.background__image--set-image {
+  background-image: url($registration-form); 
 }
 
-.terms-read {
+.form-card {
+    min-height: 460px;
+}
+
+.reg-form--mid-width {
+    width: 50%;
+    @media (max-width: 576px) {
+        width: 100%
+    }
+}
+
+.reg-form__name-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.reg-form__street-grid {
+    display: grid;
+    grid-template-columns: 50% 25% 25%;
+}
+
+.reg-form__city-grid {
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.reg-form__button-container-flex {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.reg-form__footnote {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.reg-form__terms-read {
   position: relative;
   cursor: pointer;
   margin-left: 7px;
   bottom: -7px;
-}
-
-.mid-width {
-  width: 50%;
-}
-
-//.grid-long {
-//  width: 80%;
-//}
-//
-//.grid-short {
-//  width: 10%;
-//}
-
-.name-grid{
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
-
-.street-grid{
-  display: grid;
-  grid-template-columns: 50% 25% 25%;
-}
-
-.city-grid{
-  display: grid;
-  grid-template-columns: 30% 70%;
-}
-
-.button-container-flex {
-  display: flex;
-  justify-content: flex-end;
-}
-
-@media (max-width: 576px) {
-  .mid-width {
-    width: 100%
-  }
-}
-
-.footnote{
-  font-size: 12px;
-  color: rgba(0, 0, 0, 0.54);
 }

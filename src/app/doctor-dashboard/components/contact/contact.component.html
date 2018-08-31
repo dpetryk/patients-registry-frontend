@@ -1,53 +1,46 @@
-<div *ngIf="patient" class="main-content">
-  <h1>Patient's contact details</h1><br>
-  <div class="container-flex-center">
-    <mat-card class="contact-card">
-      <div class="container-flex">
-        <div class="flex-avatar"><img src="assets/avatar.png" class="avatar"></div>
-        <div class="flex-name">
-          <h2>{{patient.lastName}}, {{patient.firstName}}
-            <mat-icon *ngIf="patient.vip" class="vip">star</mat-icon>
-          </h2>
-          <h2>{{patient.pesel}}</h2>
-        </div>
+<div *ngIf="patient">
+  <mat-dialog-content>
+    <div class="contact__container-flex">
+      <div class="contact__flex-avatar"><img src="assets/avatar.png" class="contact__avatar"></div>
+      <div class="contact__flex-name">
+        <h2>{{patient.lastName}}, {{patient.firstName}}
+          <mat-icon *ngIf="patient.vip" class="contact__vip-star">star</mat-icon>
+        </h2>
+        <h2>{{patient.pesel}}</h2>
       </div>
-      <div class="container-flex">
-        <div class="flex-address">
-          <mat-list>
-            <mat-list-item>
-              <mat-icon class="contact-icon">phone</mat-icon>
-              {{patient.phone}}
-            </mat-list-item>
-            <mat-list-item>
-              <mat-icon class="contact-icon">email</mat-icon>
-              <a href="mailto:{{patient.email}}">{{patient.email}}</a>
-            </mat-list-item>
-            <mat-list-item>
-              <mat-icon class="contact-icon">home</mat-icon>
-              {{patient.address.street}}&nbsp;{{patient.address.house}}/{{patient.address.apartment}},
-              {{patient.address.postal}}&nbsp;{{patient.address.city}}
-            </mat-list-item>
-          </mat-list>
-        </div>
-      </div><br>
-        <div class="container-flex-buttons">
-          <button mat-button color="primary" routerLink="/patients/{{patient.id}}">
-            <mat-icon class="action-icon" matTooltipPosition="before">
-              assignment
-            </mat-icon>
-            <span class="hyper-black">View&nbsp;visits&nbsp;history</span>
-          </button>
-          <button mat-button color="primary" (click)="toggleVip(patient, patient.id)">
-            <mat-icon class="action-icon" matTooltipPosition="above" color="primary">
-              star
-            </mat-icon>
-            <span class="hyper-black">Mark&nbsp;as&nbsp;VIP</span>
-          </button>
-        </div>
+    </div>
+    <div class="contact__container-flex">
+      <div class="contact__flex-address">
+        <mat-list>
+          <mat-list-item>
+            <mat-icon class="contact__contact-icon">phone</mat-icon>
+            {{patient.phone}}
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon class="contact__contact-icon">email</mat-icon>
+            <a href="mailto:{{patient.email}}" tabindex="-1">{{patient.email}}</a>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon class="contact__contact-icon">home</mat-icon>
+            {{patient.address.street}}&nbsp;{{patient.address.house}}/{{patient.address.apartment}}, {{patient.address.postal}}&nbsp;{{patient.address.city}}
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </div><br>
 
-    </mat-card>
-  </div>
-
-
-  <!--<mat-icon style="font-size: 300px; color:#EEEEEE">account_box</mat-icon>-->
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <div class="contact__container-flex-buttons">
+      <button mat-button color="primary" (click)="dismiss()">
+        <mat-icon>cancel</mat-icon>
+        Close
+      </button>
+      <button mat-button color="primary" (click)="toggleVip(patient, patient.id)">
+        <mat-icon color="primary">
+          star
+        </mat-icon>
+        Mark&nbsp;as&nbsp;VIP
+      </button>
+    </div>
+  </mat-dialog-actions>
 </div>

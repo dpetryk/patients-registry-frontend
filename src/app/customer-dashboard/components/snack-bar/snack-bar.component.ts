@@ -3,11 +3,11 @@ import {DialogService} from "../../services/dialog.service";
 
 @Component({
   template: `
-    <mat-icon class="lower-icon">check_circle</mat-icon>
+    <mat-icon class="snackbar__lower-icon">check_circle</mat-icon>
     <span> Visit registered: {{timeToConfirm | date: 'EEEE, MMMM d'}}
 </span>`,
   styles: [`
-    .lower-icon {
+    .snackbar__lower-icon {
       position: relative;
       bottom: -5px;
       left: -5px;

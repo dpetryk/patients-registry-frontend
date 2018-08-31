@@ -1,42 +1,43 @@
-<div class="hero-container">
-  <img src="../../../../assets/hero-images/office_3000x1430.jpg" class="hero">
-</div>
-<div class="main-content over-hero">
-  <h1 class="hero-text">Book your visit</h1>
-  <div>
+<div class="background__image background__image--set-image ">
+  <div class="hero-spacer-top"></div>
+  <div class="main-content">
+    <h1 class="hero-text">Book your visit</h1>
     <div>
-      <button class="prev-next-btn" mat-raised-button color="primary" (click)="prevWeek($event)">
-        <mat-icon>chevron_left</mat-icon>
-        <span class="pc-show">Previous week</span>
-      </button>
-    </div>
-    <div>
-      <button class="prev-next-btn" mat-raised-button color="primary" (click)="nextWeek($event)">
+      <div>
+        <button class="prev-next-btn" mat-raised-button color="primary" (click)="prevWeek($event)">
+          <mat-icon>chevron_left</mat-icon>
+          <span class="pc-show">Previous week</span>
+        </button>
+      </div>
+      <div>
+        <button class="prev-next-btn" mat-raised-button color="primary" (click)="nextWeek($event)">
           <span class="pc-show">Next week</span>
-        <mat-icon>chevron_right</mat-icon>
-      </button>
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </div>
     </div>
+    <br><br>
+    <table class="calendar__table shadow">
+      <thead>
+        <th class="calendar__th calendar__td-time"></th>
+        <th class="calendar__th" *ngFor="let weekDay of weekDays; let i = index">
+          <span class="pc-show"> {{weekDays[i] | date: 'EEEE'}}<br></span>
+          <span class="calendar__th--small-date pc-show">{{weekDays[i] | date: "dd.MM.yyyy"}}</span>
+          <span class="mobile-show-block"> {{weekDays[i] | date: 'EEE'}}<br></span>
+          <span class="calendar__th--small-date mobile-show-block">{{weekDays[i] | date: "dd.MM"}}</span>
+        </th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let time of timeTable">
+          <td class="calendar__td calendar__td-time">
+            <span class="pc-show">{{time}}</span>
+            <span class="mobile-show-block">{{time | NumberOfWordsPipe: 1}}</span>
+          </td>
+          <td *ngFor="let workDay of workDays" class="calendar__td calendar__select-slot" (click)="handleRegistryConfirmation($event, workDay, time)"></td>
+          <td class=" calendar__td calendar__select-slot--holiday"></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <br><br>
-  <table class="table shadow">
-    <thead>
-      <th class="time"></th>
-      <th *ngFor="let weekDay of weekDays; let i = index">
-        <span class="pc-show"> {{weekDays[i] | date: 'EEEE'}}<br></span>
-        <span class="small-date pc-show">{{weekDays[i] | date: "dd.MM.yyyy"}}</span>
-        <span class="mobile-show-block"> {{weekDays[i] | date: 'EEE'}}<br></span>
-        <span class="small-date mobile-show-block">{{weekDays[i] | date: "dd.MM"}}</span>
-      </th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let time of timeTable">
-        <td class="time">
-          <span class="pc-show">{{time}}</span>
-          <span class="mobile-show-block">{{time | NumberOfWordsPipe: 1}}</span>
-        </td>
-        <td *ngFor="let workDay of workDays" class="slot" (click)="handleRegistryConfirmation($event, workDay, time)"></td>
-        <td class="slot-holiday"></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="hero-spacer-bottom"></div>
 </div>

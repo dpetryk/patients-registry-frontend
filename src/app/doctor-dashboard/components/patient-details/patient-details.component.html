@@ -1,23 +1,19 @@
-<div class="hero-container">
-  <img src="../../../../assets/hero-images/form_2048x1365.jpg" class="hero">
-</div>
-<div class="main-content over-hero-low" *ngIf="patient">
-  <div class="row">
-    <div class="page-header col">
-      <h1 class="hero-text">{{patient.lastName}}, {{patient.firstName}} <mat-icon *ngIf="patient.vip" class="vip">star</mat-icon></h1>
+<div class="background__image background__image--set-image">
+  <div class="main-content" *ngIf="patient">
+    <div>
+      <div>
+        <h1 class="hero-text">{{patient.lastName}}, {{patient.firstName}}
+          <mat-icon *ngIf="patient.vip">star</mat-icon>
+        </h1>
         <h2 class="">{{patient.pesel}}</h2>
-
-
+      </div>
+      <div align="right">
+        Address:<br>ul. {{patient.address.street}} {{patient.address.house}}/{{patient.address.apartment}}<br>
+        {{patient.address.postal}} {{patient.address.city}}
+      </div>
     </div>
-
-
-    <div class="col" align="right">
-
-      Address: <br>ul. {{patient.address.street}}
-      {{patient.address.house}}/{{patient.address.apartment}}<br> {{patient.address.postal}}
-      {{patient.address.city}}
-    </div>
+    <mat-divider></mat-divider>
+    <app-visit-history [patientId]="patient.id"></app-visit-history>
   </div>
-  <mat-divider></mat-divider>
-  <app-visit-history [patientId]="patient.id"></app-visit-history>
+  <div class="hero-spacer-bottom"></div>
 </div>

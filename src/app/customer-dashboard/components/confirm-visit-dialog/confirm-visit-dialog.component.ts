@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from "@angular/material";
+
 import moment from "moment-es6";
-import {VisitService} from "../../../core/services/visit.service";
-import {DialogService} from "../../services/dialog.service";
-import {Visit} from "../../../core/models/visit.model";
-import {MatDialogRef} from "@angular/material";
-import {Patient} from "../../../core/models/patient.model";
+import { VisitService } from "../../../core/services/visit.service";
+import { DialogService } from "../../services/dialog.service";
+import { Visit } from "../../../core/models/visit.model";
+import { Patient } from "../../../core/models/patient.model";
 
 @Component({
   selector: 'app-confirm-visit-dialog',
@@ -17,8 +18,8 @@ export class ConfirmVisitDialogComponent implements OnInit {
   confirmation: boolean;
 
   constructor(private dialogService: DialogService,
-              private visitService: VisitService,
-              private dialogRef: MatDialogRef<ConfirmVisitDialogComponent>) {
+    private visitService: VisitService,
+    private dialogRef: MatDialogRef<ConfirmVisitDialogComponent>) {
   }
 
   ngOnInit() {
@@ -27,8 +28,8 @@ export class ConfirmVisitDialogComponent implements OnInit {
   }
 
   confirmVisit(visitDate: moment.Moment): void {
-    const visit = new Visit(undefined, visitDate.toDate(), '', '', '',false, new Patient(
-null, 'Added', 'Newly', '22222222222', 'test@test.pl', '751233211', true, null
+    const visit = new Visit(undefined, visitDate.toDate(), '', '', '', false, new Patient(
+      null, 'Added', 'Newly', '22222222222', 'test@test.pl', '751233211', true, null
     ));
     this.visitService.createVisit(visit).subscribe(
       data => {

@@ -1,12 +1,12 @@
-p {
+.dialog__content {
   text-align: center;
 }
 
-.container-flex{
+.dialog__container-flex{
   display: flex;
   justify-content: flex-end;
 }
 
-.divider{
+.dialog__divider {
   flex: 1;
 }

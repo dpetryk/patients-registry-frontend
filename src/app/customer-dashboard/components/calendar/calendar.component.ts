@@ -2,7 +2,6 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { ActivatedRoute } from "@angular/router";
 
-import { VisitService } from '../../../core/services/visit.service';
 import { Visit } from '../../../core/models/visit.model';
 import { ConfirmVisitDialogComponent } from "../confirm-visit-dialog/confirm-visit-dialog.component";
 import { DialogService } from "../../services/dialog.service";
@@ -28,7 +27,6 @@ export class CalendarComponent implements OnInit, AfterViewInit {
 
   constructor(
     private dialogService: DialogService,
-    private visitService: VisitService,
     private route: ActivatedRoute,
     private dialog: MatDialog,
     private snackBar: MatSnackBar
@@ -98,7 +96,7 @@ export class CalendarComponent implements OnInit, AfterViewInit {
   }
 
   handleRegistryConfirmation(event: MouseEvent, workDay: moment.Moment, time: string): void {
-    if ((<HTMLElement>event.target).classList.contains('taken')) {
+    if ((<HTMLElement>event.target).classList.contains('calendar__select-slot--taken')) {
       this.dialogService.confirmation = false;
       this.openConfirmVisitDialog();
     } else {
@@ -150,14 +148,14 @@ export class CalendarComponent implements OnInit, AfterViewInit {
         if (hourIndex > this.slots.length) {
           continue;
         }
-        this.slots[hourIndex][dayIndex].classList.add('taken');
+        this.slots[hourIndex][dayIndex].classList.add('calendar__select-slot--taken');
       }
     }
   }
 
   clearTakenSlots() {
-    Array.from(document.querySelectorAll('.taken')).forEach((slot) => {
-      slot.classList.remove('taken');
+    Array.from(document.querySelectorAll('.calendar__select-slot--taken')).forEach((slot) => {
+      slot.classList.remove('calendar__select-slot--taken');
     });
   }
 

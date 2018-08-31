@@ -1,18 +1,24 @@
-table {
+@import "~src/css/colors";
+@import "~src/css/images";
+
+.background__image--set-image {
+  background-image: url($patient-list);
+}
+
+.patients-table {
   width: 100%;
 }
 
-.vip {
+.patients-table__vip-star {
   position: relative;
-  font-size: 18px;
+  font-size: 0.75rem;
   bottom: -4px;
 }
 
-.bold {
-  font-weight: 600;
-}
-
-.option-icons{
+.patients-table__option-icons {
   position: relative;
   bottom: -4px;
+  color: $color-primary;
+  cursor: pointer;
 }
+

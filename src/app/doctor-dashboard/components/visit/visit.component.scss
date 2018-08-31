@@ -1,31 +1,52 @@
-table {
-  width: 100%;
+@import "~src/css/images";
+.background__image--set-image {
+    background-image: url($visits);
 }
 
 .prev-next-btn {
-  position: relative;
-  float: left;
-  width: 150px;
-  margin-right: 15px;
-  bottom: -10px;
+    position: relative;
+    float: left;
+    width: 150px;
+    margin-right: 15px;
+    bottom: -10px;
 }
 
 .date-picker {
-  position: relative;
-  float: left;
-}
-.enter-link{
-  float: right;
+    position: relative;
+    float: left;
 }
 
-.td-icon{
-  position: relative;
-  bottom: -6px;
-  margin-left: 3px;
+.visits-table {
+    width: 100%;
 }
 
-.vip {
-  position: relative;
-  font-size: 18px;
-  bottom: -4px;
+.visits-table__vip-star {
+    position: relative;
+    font-size: .75rem;
+    bottom: -4px;
 }
+
+.visits-table__enter-link {
+    float: right;
+}
+
+.visits-table__td-icon {
+    position: relative;
+    bottom: -6px;
+    margin-left: 3px;
+}
+
+// .container-flex {
+//   display: flex;
+//   flex-direction: column;
+//   flex-wrap: nowrap;
+//   justify-content: flex-start;
+//   align-content: stretch;
+//   align-items: flex-start;
+// }
+
+// .flex-stretch {
+//   width: 50px;
+//   flex: 1 1 auto;
+//   align-self: auto;
+// }

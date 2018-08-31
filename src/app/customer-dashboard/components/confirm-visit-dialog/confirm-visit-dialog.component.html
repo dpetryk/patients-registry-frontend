@@ -1,17 +1,17 @@
 <div *ngIf="confirmation">
   <!--<h2 mat-dialog-title>Visit confirmation</h2>-->
   <mat-dialog-content>
-    <p>You have selected visit on: <br/>
+    <p class="dialog__content">You have selected visit on: <br/>
       <strong>{{selectedTimestamp | date: 'EEEE'}} {{selectedTimestamp | date: 'dd.MM.yyyy'}}</strong>
       at <strong>{{selectedTimestamp | date: 'HH:mm'}}</strong></p>
-    <p class="modal-text">Do you confirm your visit?</p>
+    <p class="dialog__content">Do you confirm your visit?</p>
   </mat-dialog-content>
-  <mat-dialog-actions class="container-flex">
+  <mat-dialog-actions class="dialog__container-flex">
        <button mat-button color="primary" (click)="confirmVisit(selectedTimestamp)">
       <mat-icon>check_circle</mat-icon>
       Confirm
     </button>
-    <div class="divider"></div>
+    <div class="dialog__divider"></div>
     <button mat-button color="primary"(click)="dismiss()">
       <mat-icon>cancel</mat-icon>
       Cancel
@@ -21,10 +21,10 @@
 <div *ngIf="!confirmation">
   <h2 mat-dialog-title>Registration unavailable</h2>
   <mat-dialog-content>
-    <p class="modal-text">Unfortunately this slot is taken.
-    <p class="modal-text">Please select free slot.</p>
+    <p class="dialog__content">Unfortunately this slot is taken.
+    <p class="dialog__content">Please select free slot.</p>
   </mat-dialog-content>
-  <mat-dialog-actions class="container-flex">
+  <mat-dialog-actions class="dialog__container-flex">
     <button mat-button color="primary" (click)="dismiss()">
       OK
     </button>

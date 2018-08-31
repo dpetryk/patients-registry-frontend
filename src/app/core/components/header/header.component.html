@@ -1,11 +1,11 @@
 <mat-toolbar color="primary" class="toolbar mat-elevation-z10" role="heading">
-  <button mat-button class="nav-element"><mat-icon class="logo-icon">local_hospital </mat-icon> <span class="logo">Patients registry</span></button>
-  <button mat-button class="nav-element" routerLink="visits">Registered visits</button>
-  <button mat-button class="nav-element" routerLink="calendar">Book a visit</button>
-  <button mat-button class="hamburger" (click)='onClick()'><mat-icon>menu</mat-icon></button>
-  <div class="flex-spacer"></div>
-  <p class="greeting">Welcome, Damian!</p>
-  <a class="loggedin-icon" matTooltip="View profile options" [matMenuTriggerFor]="profileSubmenu"><mat-icon >account_box</mat-icon></a>
+  <button mat-button class="toolbar__nav-element"><mat-icon class="toolbar__logo-icon">local_hospital </mat-icon> <span class="toolbar__logo">Patients registry</span></button>
+  <button mat-button class="toolbar__nav-element" routerLink="visits">Registered visits</button>
+  <button mat-button class="toolbar__nav-element" routerLink="calendar">Book a visit</button>
+  <button mat-button class="toolbar__hamburger" (click)='onClick()'><mat-icon>menu</mat-icon></button>
+  <div class="toolbar__flex-spacer"></div>
+  <p class="toolbar__greeting">Welcome, Damian!</p>
+  <a class="toolbar__loggedin-icon" matTooltip="View profile options" [matMenuTriggerFor]="profileSubmenu"><mat-icon >account_box</mat-icon></a>
 </mat-toolbar>
 <mat-menu #profileSubmenu="matMenu">
   <button mat-menu-item>View data</button>
