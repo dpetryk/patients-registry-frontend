@@ -1,0 +1,51 @@
+@import "~src/css/colors";
+@mixin flex-grow {
+    flex: 1;
+}
+
+@mixin display-flex {
+    display: flex;
+}
+
+.visit-entry {
+    max-width: 100%;
+    margin-bottom: 30px;
+}
+
+.visit-entry__note-header {
+    color: lighten($color-dark, 20%);
+}
+
+.visit-entry__container-flex {
+    @include display-flex;
+}
+
+.visit-entry__inner-flex {
+    @include display-flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    flex: 1;
+}
+
+.visit-entry__upper-box {
+    @include flex-grow;
+    padding: 0 10px 0 0;
+}
+
+.visit-entry__lower-box {
+    @include flex-grow;
+    border-top: solid 1px $color-light;
+    // height: 200px;
+    // position: relative;
+    padding-right: 10px;
+}
+
+.visit-entry__right-box {
+    border-left: solid 1px $color-light;
+    padding: 0 10px 10px 10px;
+    min-width: 180px;
+}
+
+.visit-entry__action-btns-edit {
+  float: right;
+}

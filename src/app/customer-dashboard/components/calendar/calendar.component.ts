@@ -118,7 +118,7 @@ export class CalendarComponent implements OnInit, AfterViewInit {
   }
 
   assignSlotsArray() {
-    let slots = document.querySelectorAll('.slot');
+    let slots = document.querySelectorAll('.calendar__select-slot');
     let slots2D = [];
     let index = 0;
     for (let i = 0; i < this.timeTable.length; i++) {

@@ -1,5 +1,11 @@
 @import "~src/css/images";
+@import "~src/css/breakpoints";
 
 .background__image--set-image {
     background-image: url($patient-details);
+}
+
+.hero__spacer--top-low {
+    height: 10px;
+    flex: 0 1 auto;
 }

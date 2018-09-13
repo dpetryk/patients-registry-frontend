@@ -1,4 +1,5 @@
 <div class="background__image background__image--set-image">
+  <div class="hero__spacer--top-low"></div>
   <div class="main-content" *ngIf="patient">
     <div>
       <div>
@@ -8,11 +9,12 @@
         <h2 class="">{{patient.pesel}}</h2>
       </div>
       <div align="right">
-        Address:<br>ul. {{patient.address.street}} {{patient.address.house}}/{{patient.address.apartment}}<br>
-        {{patient.address.postal}} {{patient.address.city}}
+        Address:<br>ul. {{patient.address.street}} {{patient.address.house}}/{{patient.address.apartment}}<br> {{patient.address.postal}}
+        {{patient.address.city}}
       </div>
     </div>
     <mat-divider></mat-divider>
+    <app-visit-entry-edit [patient]="patient"></app-visit-entry-edit>
     <app-visit-history [patientId]="patient.id"></app-visit-history>
   </div>
   <div class="hero-spacer-bottom"></div>

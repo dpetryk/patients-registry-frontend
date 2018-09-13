@@ -1,0 +1,20 @@
+@import "~src/css/colors";
+
+.visit-entry__description-textarea {
+    width: 100%;
+    border: none;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    resize: none;
+    min-height: 120px;
+    background-color: $color-primary-light;
+
+    transition: .3s;
+    padding: 0;
+    &:focus {
+        outline-width: 0;
+    }
+}
+ 
+textarea.visit-entry__description-textarea--full-height {
+        min-height: 280px;
+}

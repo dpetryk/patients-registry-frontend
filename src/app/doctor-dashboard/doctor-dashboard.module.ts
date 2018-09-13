@@ -9,6 +9,8 @@ import { PatientDetailsComponent } from './components/patient-details/patient-de
 import { VisitHistoryComponent } from './components/visit-history/visit-history.component';
 import { PatientsListComponent } from './components/patients-list/patients-list.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { VisitEntryComponent } from './components/visit-entry/visit-entry.component';
+import { VisitEntryEditComponent } from './components/visit-entry/visit-entry-edit/visit-entry-edit.component';
 
 @NgModule({
   imports: [
@@ -22,7 +24,9 @@ import { ContactComponent } from './components/contact/contact.component';
     PatientDetailsComponent,
     VisitHistoryComponent,
     PatientsListComponent,
-    ContactComponent
+    ContactComponent,
+    VisitEntryComponent,
+    VisitEntryEditComponent
   ],
   entryComponents: [
     ContactComponent

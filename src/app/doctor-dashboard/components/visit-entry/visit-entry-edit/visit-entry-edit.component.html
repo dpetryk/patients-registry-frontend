@@ -1,0 +1,40 @@
+<!-- <div *ngIf="visit" class="visit-entry"> -->
+
+<br/>New entry:
+<br/>
+<br/>
+<mat-card>
+  <!-- <mat-card-header>
+      <mat-card-subtitle>{{visit.visitDate | date: "dd.MM.yyyy"}}</mat-card-subtitle>
+    </mat-card-header> -->
+  <form #visitEntryForm="ngForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+      <div class="visit-entry__container-flex">
+        <div class="visit-entry__inner-flex">
+          <div class="visit-entry__upper-box">
+            <span class="visit-entry__note-header"> Description:<br></span>
+            <textarea class="visit-entry__description-textarea" [(ngModel)]="visit.notes" name="notes"></textarea>
+            <!-- {{visit.notes}}<br><br> -->
+          </div>
+          <div class="visit-entry__lower-box"><span class="visit-entry__note-header"> Recommendations:<br></span>
+            <textarea class="visit-entry__description-textarea" [(ngModel)]="visit.recommendations" name="recommendations"></textarea>
+            <!-- {{visit.recommendations}} -->
+          </div>
+        </div>
+        <div class="visit-entry__right-box">
+          <span class="visit-entry__note-header"> Prescriptions:<br></span>
+          <textarea class="visit-entry__description-textarea visit-entry__description-textarea--full-height" [(ngModel)]="visit.prescriptions"
+            name="prescriptions"></textarea>
+          <!-- {{visit.prescriptions}} -->
+        </div>
+      </div>
+      form: {{visitEntryForm.value | json}} <br> model: {{visit | json}}
+
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-button>CLEAR</button>
+      <button mat-button type="submit">SAVE</button>
+    </mat-card-actions>
+  </form>
+</mat-card>
+<!-- </div> -->

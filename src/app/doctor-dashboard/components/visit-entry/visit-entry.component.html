@@ -1,0 +1,28 @@
+<div *ngIf="visit" class="visit-entry">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-subtitle>{{visit.visitDate | date: "dd.MM.yyyy"}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="visit-entry__container-flex">
+        <div class="visit-entry__inner-flex">
+          <div class="visit-entry__upper-box">
+            <span class="visit-entry__note-header"> Description:<br></span>
+            {{visit.notes}}<br><br>
+          </div>
+          <div class="visit-entry__lower-box"><span class="visit-entry__note-header"> Recommendations:<br></span>
+            {{visit.recommendations}}
+          </div>
+        </div>
+        <div class="visit-entry__right-box">
+          <span class="visit-entry__note-header"> Prescriptions:<br></span>
+          {{visit.prescriptions}}
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-button>EDIT</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+

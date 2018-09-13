@@ -1,6 +1,5 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~src/css/breakpoints";
-
 html {
     min-height: 100%;
 }
@@ -86,4 +85,10 @@ a:-webkit-any-link {
     @media (max-width: $mobile-large) {
         display: table;
     }
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
 }

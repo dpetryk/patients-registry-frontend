@@ -1,33 +1,7 @@
 <div *ngIf="visitsOfPatient" align="right">
-  <h3> Last visit date: {{visitsOfPatient[0].visitDate| date: 'dd.MM.yyyy'}}</h3> <!--write last visit date-->
+  <h3> Last visit date: {{visitsOfPatient[0].visitDate| date: 'dd.MM.yyyy'}}</h3>
 </div>
-<br>
-Visits history:
+<br/>Visits history:
 <br/>
 <br/>
-
-<div *ngFor="let visit of visitsOfPatient" class="card">
-  <mat-card class="card">
-    <mat-card-header>
-      <mat-card-subtitle>{{visit.visitDate | date: "dd.MM.yyyy"}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="container-flex">
-        <div class="custom-flex">
-          <div class="upper-box">
-            <span class="note-content"> Description:<br></span>
-            {{visit.notes}}<br><br>
-          </div>
-          <div class="lower-box"><br><span class="note-content"> Recommendations:<br></span>
-            {{visit.recommendations}}
-          </div>
-        </div>
-        <div class="inline right-box">
-          <span class="note-content"> Prescriptions:<br></span>
-          {{visit.prescriptions}}
-        </div>
-      </div>
-    </mat-card-content>
-  </mat-card>
-</div>
-
+<app-visit-entry *ngFor="let visit of visitsOfPatient" [visit]="visit"></app-visit-entry>
